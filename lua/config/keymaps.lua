@@ -29,6 +29,10 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
   utils.remap_opt("raw rename all occurrences under cursor",true)
 )
 
+vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",
+  utils.remap_opt("remove trailing characters",true)
+)
+
 -- vim.keymap.set("n", "<leader>ow", ":set wrap<CR>")
 -- vim.keymap.set("n", "<leader>Ow", ":set nowrap<CR>")
 vim.keymap.set("n", "<leader>tw", function()

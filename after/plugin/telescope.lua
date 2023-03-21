@@ -30,30 +30,27 @@ vim.keymap.set("n", "<leader>gc", builtin.git_commits,
     utils.remap_opt("[g]it [c]ommits",true)
 )
 
-vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles,
+vim.keymap.set("n", "<leader>?", builtin.oldfiles,
     utils.remap_opt("find recently opened files",true)
 )
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers,
+vim.keymap.set("n", "<leader><space>", builtin.buffers,
     utils.remap_opt("find existing buffers",true)
 )
-vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files,
+vim.keymap.set("n", "<leader>sf", builtin.find_files,
     utils.remap_opt("[s]earch [f]iles",true)
 )
-vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags,
+vim.keymap.set("n", "<leader>sh", builtin.help_tags,
     utils.remap_opt("[s]earch [h]elp",true)
 )
-vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep,
+vim.keymap.set("n", "<leader>sg", builtin.live_grep,
     utils.remap_opt("[s]earch by [g]rep",true)
 )
-vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics,
+vim.keymap.set("n", "<leader>sd", builtin.diagnostics,
     utils.remap_opt("[s]earch [d]iagnostics",true)
 )
-vim.keymap.set("n", "<leader>sw", function()
-    builtin.grep_string({ search = vim.fn.input("grep ➜ ") })
-end, utils.remap_opt("[s]earch [w]ord",true))
 
 -- override default spell_suggest
-vim.keymap.set("n", "z=", "<cmd>silent Telescope spell_suggest<CR>",
+vim.keymap.set("n", "z=", "<CMD>silent Telescope spell_suggest<CR>",
     utils.remap_opt("spell suggestion",true)
 )
 

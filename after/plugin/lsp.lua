@@ -23,16 +23,16 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration,
     utils.remap_opt("[g]o to [D]eclaration", true)
   )
-  vim.keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<cr>",
+  vim.keymap.set("n", "<leader>gd", "<CMD>Telescope lsp_definitions<CR>",
     utils.remap_opt("[g]o to [d]definitions",true)
   )
-  vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>",
+  vim.keymap.set("n", "<leader>gr", "<CMD>Telescope lsp_references<CR>",
     utils.remap_opt("[g]o to [r]eferences",true)
   )
-  vim.keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<cr>",
+  vim.keymap.set("n", "<leader>gi", "<CMD>Telescope lsp_implementations<CR>",
     utils.remap_opt("[g]o to [i]mplementations",true)
   )
-  vim.keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>",
+  vim.keymap.set("n", "<leader>gt", "<CMD>Telescope lsp_type_definitions<CR>",
     utils.remap_opt("[g]o to [t]ype definitions",true)
   )
   vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover,

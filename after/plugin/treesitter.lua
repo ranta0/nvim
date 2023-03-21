@@ -1,14 +1,14 @@
 local present, treesitter = pcall(require, "nvim-treesitter.configs")
 
 if not present then
-    return
+  return
 end
 
 local utils = require("utils")
 treesitter.setup({
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = {"php"},
     disable = function(lang, bufnr)
       return lang == "javascript" and vim.api.nvim_buf_line_count(bufnr) > 50000
     end,
@@ -28,7 +28,11 @@ treesitter.setup({
     enable = true
   },
   incremental_selection = {
-    enable = true
+    enable = true,
+    keymaps = {
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+    },
   },
   indent = {
     enable = true

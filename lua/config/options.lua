@@ -1,3 +1,4 @@
+vim.o.number = true
 vim.o.relativenumber = true
 
 vim.o.tabstop = 4
@@ -9,6 +10,7 @@ vim.o.smartindent = true
 
 vim.o.wrap = false
 vim.o.list = true
+vim.opt.listchars:append "eol:↴"
 
 vim.o.swapfile = false
 vim.o.backup = false

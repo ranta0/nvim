@@ -55,6 +55,16 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
+    opts = {
+      space_char_blankline = " ",
+      show_current_context = true,
+      show_current_context_start = true,
+    },
+  },
+
   "folke/neodev.nvim",
 
   { "nvim-telescope/telescope.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" } },
@@ -65,18 +75,7 @@ require("lazy").setup({
 
   "tpope/vim-sleuth",
 
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-      },
-    },
-  },
+  "lewis6991/gitsigns.nvim",
 
   "tpope/vim-fugitive",
 
