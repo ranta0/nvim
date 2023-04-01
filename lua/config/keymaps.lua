@@ -25,8 +25,12 @@ vim.keymap.set("n", "<S-TAB>", "<CMD>bprevious<CR>")
 
 vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   utils.remap_opt("raw rename all occurrences under cursor",true)
+)
+
+vim.keymap.set("n", "<leader>x", "<CMD>!chmod +x %<CR>",
+  utils.remap_opt("make the current file executable",true)
 )
 
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",

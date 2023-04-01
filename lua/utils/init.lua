@@ -25,6 +25,8 @@ M.ensure_installed_hl = {
     "css",
     "lua",
     "php",
+    "go",
+    "bash",
 }
 
 M.ensure_installed_lsp = {

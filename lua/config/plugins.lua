@@ -55,6 +55,8 @@ require("lazy").setup({
     end,
   },
 
+  "nvim-treesitter/nvim-treesitter-context",
+
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
@@ -81,9 +83,17 @@ require("lazy").setup({
 
   "tpope/vim-rhubarb",
 
-  "voldikss/vim-floaterm",
-
   { "j-hui/fidget.nvim", opts = {} },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    event = "BufRead",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  "vimwiki/vimwiki",
 
   "junegunn/vim-easy-align",
 

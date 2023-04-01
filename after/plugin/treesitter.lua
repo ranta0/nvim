@@ -41,3 +41,21 @@ treesitter.setup({
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+local present_context, treesitter_context = pcall(require, "treesitter-context")
+
+if not present_context then
+  return
+end
+
+treesitter_context.setup{
+  enable = true,
+  max_lines = 0,
+  min_window_height = 0,
+  line_numbers = true,
+  multiline_threshold = 20,
+  trim_scope = 'outer',
+  mode = 'cursor',
+  separator = nil,
+  zindex = 20,
+}

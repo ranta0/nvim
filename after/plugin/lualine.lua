@@ -38,6 +38,7 @@ ins_left({
     "filename",
     cond = conditions.buffer_not_empty,
     color = { fg = "#c678dd", gui = "bold" },
+    path = 1,
 })
 
 ins_left({
