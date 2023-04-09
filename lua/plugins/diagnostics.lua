@@ -30,3 +30,5 @@ for type, icon in pairs(utils.diagnostics_signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+return {}

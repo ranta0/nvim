@@ -42,3 +42,11 @@ vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",
 vim.keymap.set("n", "<leader>tw", function()
   utils.toggle("wrap")
 end, utils.remap_opt("[t]oggle [w]rap",true))
+
+vim.keymap.set("n", "<leader>tn", function()
+  utils.toggle("relativenumber")
+end, utils.remap_opt("[t]oggle relative[n]umber",true))
+
+vim.keymap.set("n", "<leader>th", function()
+  utils.toggle("hlsearch")
+end, utils.remap_opt("[t]oggle [h]lsearch",true))

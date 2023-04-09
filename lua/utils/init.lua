@@ -51,7 +51,6 @@ M.ensure_installed_lsp = {
     "yaml-language-server",
 }
 
--- 
 function M.toggle(option, values)
     if values then
         if vim.opt_local[option]:get() == values[1] then
