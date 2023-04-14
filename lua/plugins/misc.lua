@@ -3,6 +3,8 @@ local utils = require("utils")
 return {
     "tpope/vim-sleuth",
 
+    "numToStr/Comment.nvim",
+
     { "j-hui/fidget.nvim", opts = {} },
 
     {
