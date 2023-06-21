@@ -50,8 +50,8 @@ return {
             vim.keymap.set("n", "<leader>sf", builtin.find_files,
                 utils.remap_opt("[s]earch [f]iles",true)
             )
-            vim.keymap.set("n", "<leader>sh", builtin.help_tags,
-                utils.remap_opt("[s]earch [h]elp",true)
+            vim.keymap.set("n", "<leader>sh", "<CMD>Telescope find_files hidden=true<CR>",
+                utils.remap_opt("[s]earch files [h]idden",true)
             )
             vim.keymap.set("n", "<leader>sg", builtin.live_grep,
                 utils.remap_opt("[s]earch by [g]rep",true)

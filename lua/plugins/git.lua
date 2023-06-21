@@ -32,6 +32,9 @@ return {
             vim.keymap.set("n", "[h", gitsigns.prev_hunk,
                 utils.remap_opt("git previous hunk",true)
             )
+            vim.keymap.set("n", "<leader>gg", gitsigns.diffthis,
+                utils.remap_opt("[g]it diff current file",true)
+            )
         end
     }
 }
