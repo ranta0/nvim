@@ -1,6 +1,12 @@
 local utils = require("utils")
 
 return {
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
+    },
+
     "tpope/vim-sleuth",
 
     {
@@ -36,7 +42,7 @@ return {
             {
                 "<leader>ga",
                 mode = "v",
-                "<CMD>EasyAlign<CR>",
+                ":EasyAlign",
                 desc = "align columns"
             }
         }
