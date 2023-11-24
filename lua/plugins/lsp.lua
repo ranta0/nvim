@@ -31,6 +31,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason-lspconfig.nvim",
+            "towolf/vim-helm",
         },
         config = function(_, _)
             local lspconfig = require("lspconfig")
@@ -111,6 +112,16 @@ return {
                     })
                 end,
                 -- Next, you can provide targeted overrides for specific servers.
+                ["helm_ls"] = function()
+                    lspconfig.helm_ls.setup({
+                        on_attach = on_attach,
+                        capabilities = lsp_defaults.capabilities,
+                        filetypes = { "helm_ls", "serve" },
+                        root_dir = function(fname)
+                            return lspconfig.util.root_pattern('Chart.yaml')(fname)
+                        end
+                    })
+                end,
                 ["cssls"] = function()
                     lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
                     lspconfig.cssls.setup({
