@@ -13,6 +13,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -25,8 +27,11 @@ vim.keymap.set("n", "<S-TAB>", "<CMD>bprevious<CR>")
 
 vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  utils.remap_opt("raw rename all occurrences under cursor",true)
+vim.keymap.set("n", "tr", [[:%s///gn<CR>``cgn]],
+  utils.remap_opt("replace value after search under cursor, . to continue",true)
+)
+vim.keymap.set("n", "tR", [[:%s///gn<CR>``cgN]],
+  utils.remap_opt("replace value after search under cursor, . to continue backwards",true)
 )
 
 vim.keymap.set("n", "<leader>x", "<CMD>!chmod +x %<CR>",
@@ -37,16 +42,14 @@ vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",
   utils.remap_opt("remove trailing characters",true)
 )
 
--- vim.keymap.set("n", "<leader>ow", ":set wrap<CR>")
--- vim.keymap.set("n", "<leader>Ow", ":set nowrap<CR>")
-vim.keymap.set("n", "<leader>tw", function()
-  utils.toggle("wrap")
-end, utils.remap_opt("[t]oggle [w]rap",true))
+vim.keymap.set("n", "tw", ":set wrap!<CR>",
+ utils.remap_opt("[t]oggle [w]rap",true)
+)
 
-vim.keymap.set("n", "<leader>tn", function()
-  utils.toggle("relativenumber")
-end, utils.remap_opt("[t]oggle relative[n]umber",true))
+vim.keymap.set("n", "tn", ":set relativenumber!<CR>",
+  utils.remap_opt("[t]oggle relative[n]umber",true)
+)
 
-vim.keymap.set("n", "<leader>th", function()
-  utils.toggle("hlsearch")
-end, utils.remap_opt("[t]oggle [h]lsearch",true))
+vim.keymap.set("n", "th", ":set hls!<CR>",
+  utils.remap_opt("[t]oggle [h]lsearch",true)
+)
