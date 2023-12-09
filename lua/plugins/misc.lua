@@ -42,7 +42,7 @@ return {
             {
                 "<leader>ga",
                 mode = "v",
-                ":EasyAlign",
+                ":LiveEasyAlign<CR>",
                 desc = "align columns"
             }
         }
