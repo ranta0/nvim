@@ -8,6 +8,9 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "/", "ms/")
+vim.keymap.set("n", "?", "ms?")
+
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -32,6 +35,10 @@ vim.keymap.set("n", "tr", [[:%s///gn<CR>``cgn]],
 )
 vim.keymap.set("n", "tR", [[:%s///gn<CR>``cgN]],
   utils.remap_opt("replace value after search under cursor, . to continue backwards",true)
+)
+
+vim.keymap.set("i", "<C-o>", "{<Cr>}<Esc>O",
+  utils.remap_opt("{} snippet",true)
 )
 
 vim.keymap.set("n", "<leader>x", "<CMD>!chmod +x %<CR>",
