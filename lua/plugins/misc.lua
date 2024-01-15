@@ -84,5 +84,21 @@ return {
         },
     },
 
-    "christoomey/vim-tmux-navigator",
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            vim.keymap.set("n", "<leader>nb", ":Neotree buffers reveal float<CR>",
+                utils.remap_opt("[n]eotree [b]uffers",true)
+            )
+            vim.keymap.set("n", "<leader>nt", ":Neotree toggle<CR>",
+                utils.remap_opt("[n]eotree [t]oggle",true)
+            )
+        end,
+    }
 }
