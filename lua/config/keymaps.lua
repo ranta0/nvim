@@ -25,8 +25,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<TAB>", "<CMD>bnext<CR>")
-vim.keymap.set("n", "<S-TAB>", "<CMD>bprevious<CR>")
+vim.keymap.set("n", "gf", "<C-w>gf")
+vim.keymap.set("n", "<C-t>", ":tabnew<CR>")
+vim.keymap.set("n", "<C-l>", "gt")
+vim.keymap.set("n", "<C-h>", "gT")
 
 vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 

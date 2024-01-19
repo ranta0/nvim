@@ -14,9 +14,6 @@ return {
                     mappings = {
                         i = {
                             ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
-                            -- ["<cr>"] = function(bufnr)
-                            --     require("telescope.actions.set").edit(bufnr, "tab drop")
-                            -- end
                         }
                     },
                     preview = {
@@ -66,17 +63,4 @@ return {
             )
         end
     },
-
-    -- {
-    --     'LukasPietzschmann/telescope-tabs',
-    --     dependencies = {
-    --         'nvim-telescope/telescope.nvim'
-    --     },
-    --     opts = {},
-    --     config = function ()
-    --         vim.keymap.set("n", "<leader>ff", ":lua require('telescope-tabs').list_tabs()<CR>",
-    --             utils.remap_opt("list tabs",true)
-    --         )
-    --     end
-    -- }
 }
