@@ -28,16 +28,6 @@ return {
             telescope.setup(opts)
             local builtin = require("telescope.builtin")
 
-            vim.keymap.set("n", "<leader>gs", builtin.git_status,
-                utils.remap_opt("[g]it [s]tatus",true)
-            )
-            vim.keymap.set("n", "<C-p>", builtin.git_files,
-                utils.remap_opt("git files",true)
-            )
-            vim.keymap.set("n", "<leader>gc", builtin.git_commits,
-                utils.remap_opt("[g]it [c]ommits",true)
-            )
-
             vim.keymap.set("n", "<leader>?", builtin.oldfiles,
                 utils.remap_opt("find recently opened files",true)
             )

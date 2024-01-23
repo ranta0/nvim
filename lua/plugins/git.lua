@@ -35,6 +35,9 @@ return {
             vim.keymap.set("n", "<leader>gg", gitsigns.diffthis,
                 utils.remap_opt("[g]it diff current file",true)
             )
+            vim.keymap.set("n", "<leader>gs", vim.cmd.Git,
+                utils.remap_opt("[g]it [s]tatus",true)
+            )
         end
     }
 }

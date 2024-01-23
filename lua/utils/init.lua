@@ -51,18 +51,6 @@ M.ensure_installed_lsp = {
     "yaml-language-server",
 }
 
-function M.toggle(option, values)
-    if values then
-        if vim.opt_local[option]:get() == values[1] then
-            vim.opt_local[option] = values[2]
-        else
-            vim.opt_local[option] = values[1]
-        end
-        return require("utils").info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
-    end
-    vim.opt_local[option] = not vim.opt_local[option]:get()
-end
-
 function M.remap_opt(desc, silent)
     local bufopts = {
         noremap = true,
