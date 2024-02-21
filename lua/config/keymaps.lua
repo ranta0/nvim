@@ -51,14 +51,14 @@ vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",
   utils.remap_opt("remove trailing characters",true)
 )
 
-vim.keymap.set("n", "tw", ":set wrap!<CR>",
+vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>",
  utils.remap_opt("[t]oggle [w]rap",true)
 )
 
-vim.keymap.set("n", "tn", ":set relativenumber!<CR>",
+vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>",
   utils.remap_opt("[t]oggle relative[n]umber",true)
 )
 
-vim.keymap.set("n", "th", ":set hls!<CR>",
+vim.keymap.set("n", "<leader>th", ":set hls!<CR>",
   utils.remap_opt("[t]oggle [h]lsearch",true)
 )

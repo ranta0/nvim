@@ -75,18 +75,6 @@ return {
                 vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help,
                     utils.remap_opt("open floating singature under cursor",true)
                 )
-                vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
-                    utils.remap_opt("[w]orkspace [a]dd folder",true)
-                )
-                vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
-                    utils.remap_opt("[w]orkspace [r]emove folder",true)
-                )
-                vim.keymap.set("n", "<leader>wl", function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end, utils.remap_opt("[w]orkspace [l]ist folders",true))
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,
-                    utils.remap_opt("rename all references under cursor",true)
-                )
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,
                     utils.remap_opt("[c]ode [a]ction under cursor",true)
                 )

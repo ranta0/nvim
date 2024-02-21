@@ -36,19 +36,6 @@ return {
     },
 
     {
-        "junegunn/vim-easy-align",
-        cmd = "EasyAlign",
-        keys = {
-            {
-                "<leader>ga",
-                mode = "v",
-                ":LiveEasyAlign<CR>",
-                desc = "align columns"
-            }
-        }
-    },
-
-    {
         "mbbill/undotree",
         keys = {
             {
@@ -85,20 +72,27 @@ return {
     },
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
+        'stevearc/oil.nvim',
         dependencies = {
-            "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
         },
-        config = function()
-            vim.keymap.set("n", "<leader>nb", ":Neotree buffers reveal float<CR>",
-                utils.remap_opt("[n]eotree [b]uffers",true)
+        opts = {
+        },
+        config = function ()
+            local opts = {
+                default_file_explorer = false,
+                keymaps = {
+                    ["<C-t>"] = false,
+                    ["<C-h>"] = false,
+                    ["<C-l>"] = false,
+                    ["<C-r>"] = "actions.refresh",
+                },
+            }
+            require("oil").setup(opts)
+
+            vim.keymap.set("n", "<leader>-", require("oil").open,
+                utils.remap_opt("open parent dir",true)
             )
-            vim.keymap.set("n", "<leader>nt", ":Neotree toggle<CR>",
-                utils.remap_opt("[n]eotree [t]oggle",true)
-            )
-        end,
-    }
+        end
+    },
 }
