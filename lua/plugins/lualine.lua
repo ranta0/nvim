@@ -14,13 +14,10 @@ local conditions = {
 
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
   opts = function()
     local config = {
       options = {
-        icons_enabled = true,
+        icons_enabled = false,
         theme = "catppuccin",
         component_separators = "|",
         section_separators = "",
