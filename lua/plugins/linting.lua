@@ -1,9 +1,11 @@
+local utils = require "utils"
+
 return {
   "mfussenegger/nvim-lint",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lint = require("lint")
+    local lint = require "lint"
 
     lint.linters_by_ft = {
       markdown = { "markdownlint" },
@@ -25,6 +27,6 @@ return {
 
     vim.keymap.set("n", "<leader>ml", function()
       lint.try_lint()
-    end, { desc = "[l]inting for current file" })
+    end, utils.remap_opt("[l]inting for current file", true))
   end,
 }

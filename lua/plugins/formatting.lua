@@ -1,3 +1,5 @@
+local utils = require "utils"
+
 return {
   "stevearc/conform.nvim",
   lazy = true,
@@ -28,6 +30,6 @@ return {
         async = false,
         timeout_ms = 1000,
       }
-    end, { desc = "file [f]ormat" })
+    end, utils.remap_opt("file [f]ormat", true))
   end,
 }
