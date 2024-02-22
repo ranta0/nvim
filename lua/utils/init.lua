@@ -31,7 +31,9 @@ M.ensure_installed_hl = {
 
 M.ensure_installed_lsp = {
   "css-lsp",
-  "gopls",
+  -- "phpstan",
+  -- "eslint_d",
+  -- "gopls",
   -- "html-lsp",
   -- "json-lsp",
   -- "yaml-language-server",

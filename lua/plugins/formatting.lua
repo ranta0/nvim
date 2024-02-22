@@ -1,17 +1,33 @@
 return {
   "stevearc/conform.nvim",
-  event = "VeryLazy",
-  opts = {
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_fallback = true,
-    },
-    formatters_by_ft = {
-      lua = { "stylua" },
-      javascript = { { "prettierd", "prettier" } },
-      css = { { "prettierd", "prettier" } },
-      html = { { "prettierd", "prettier" } },
-      sh = { "shfmt" },
-    },
-  },
+  lazy = true,
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    local conform = require "conform"
+
+    conform.setup {
+      formatters_by_ft = {
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        svelte = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
+      },
+    }
+
+    vim.keymap.set({ "n", "v" }, "<leader>mf", function()
+      conform.format {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      }
+    end, { desc = "file [f]ormat" })
+  end,
 }
