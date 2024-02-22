@@ -31,21 +31,11 @@ M.ensure_installed_hl = {
 
 M.ensure_installed_lsp = {
   "css-lsp",
-  -- "phpstan",
-  -- "eslint_d",
-  -- "gopls",
-  -- "html-lsp",
-  -- "json-lsp",
-  -- "yaml-language-server",
   "lua-language-server",
   "prettier",
   "prettierd",
-  "pyright",
   "stylua",
-  "typescript-language-server",
   "intelephense",
-  "vue-language-server",
-  -- "rust-analyzer",
 }
 
 function M.remap_opt(desc, silent)
