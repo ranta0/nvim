@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require "utils"
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -32,33 +32,21 @@ vim.keymap.set("n", "<C-h>", "gT")
 
 vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 
-vim.keymap.set("n", "tr", [[:%s///gn<CR>``cgn]],
-  utils.remap_opt("replace value after search under cursor, . to continue",true)
+vim.keymap.set(
+  "n",
+  "tr",
+  [[:%s///gn<CR>``cgn]],
+  utils.remap_opt("replace value after search under cursor, . to continue", true)
 )
-vim.keymap.set("n", "tR", [[:%s///gn<CR>``cgN]],
-  utils.remap_opt("replace value after search under cursor, . to continue backwards",true)
-)
-
-vim.keymap.set("i", "<C-o>", "{<Cr>}<Esc>O",
-  utils.remap_opt("{} snippet",true)
-)
-
-vim.keymap.set("n", "<leader>x", "<CMD>!chmod +x %<CR>",
-  utils.remap_opt("make the current file executable",true)
+vim.keymap.set(
+  "n",
+  "tR",
+  [[:%s///gn<CR>``cgN]],
+  utils.remap_opt("replace value after search under cursor, . to continue backwards", true)
 )
 
-vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>",
-  utils.remap_opt("remove trailing characters",true)
-)
+vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", utils.remap_opt("remove trailing characters", true))
 
-vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>",
- utils.remap_opt("[t]oggle [w]rap",true)
-)
-
-vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>",
-  utils.remap_opt("[t]oggle relative[n]umber",true)
-)
-
-vim.keymap.set("n", "<leader>th", ":set hls!<CR>",
-  utils.remap_opt("[t]oggle [h]lsearch",true)
-)
+vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", utils.remap_opt("[t]oggle [w]rap", true))
+vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>", utils.remap_opt("[t]oggle relative[n]umber", true))
+vim.keymap.set("n", "<leader>th", ":set hls!<CR>", utils.remap_opt("[t]oggle [h]lsearch", true))
