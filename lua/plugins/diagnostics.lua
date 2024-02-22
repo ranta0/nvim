@@ -27,14 +27,16 @@ end
 
 return {
   "folke/trouble.nvim",
-  opts = {
-    icons = false,
-    use_diagnostic_signs = true,
-    fold_open = "v",
-    fold_closed = ">",
-    indent_lines = false,
-  },
   config = function()
+    local opts = {
+      icons = false,
+      use_diagnostic_signs = true,
+      fold_open = "v",
+      fold_closed = ">",
+      indent_lines = false,
+    }
+    require("trouble").setup(opts)
+
     vim.keymap.set("n", "<leader>sd", "<CMD>Trouble workspace_diagnostics<CR>", utils.remap_opt("[s]earch [d]iagnostics", true))
   end,
 }
