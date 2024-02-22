@@ -33,7 +33,6 @@ return {
       vim.keymap.set("n", "<leader>sh", "<CMD>Telescope find_files hidden=true<CR>", utils.remap_opt("[s]earch [h]idden", true))
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, utils.remap_opt("[s]earch by [g]rep", true))
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, utils.remap_opt("[s]earch current [w]ord", true))
-      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, utils.remap_opt("[s]earch [d]iagnostics", true))
 
       -- override default spell_suggest
       vim.keymap.set("n", "z=", "<CMD>silent Telescope spell_suggest<CR>", utils.remap_opt("spell suggestion", true))

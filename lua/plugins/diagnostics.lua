@@ -25,4 +25,16 @@ for type, icon in pairs(utils.diagnostics_signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-return {}
+return {
+  "folke/trouble.nvim",
+  opts = {
+    icons = false,
+    use_diagnostic_signs = true,
+    fold_open = "v",
+    fold_closed = ">",
+    indent_lines = false,
+  },
+  config = function()
+    vim.keymap.set("n", "<leader>sd", "<CMD>Trouble workspace_diagnostics<CR>", utils.remap_opt("[s]earch [d]iagnostics", true))
+  end,
+}
