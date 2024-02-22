@@ -8,8 +8,6 @@ return {
       pip = {
         upgrade_pip = true,
       },
-      ensure_installed = utils.ensure_installed_lsp,
-      automatic_installation = false,
       ui = {
         border = "single",
         icons = {
@@ -28,6 +26,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
       "towolf/vim-helm",
     },
     config = function(_, _)
@@ -39,11 +38,8 @@ return {
       require("neodev").setup {}
 
       local lsp_defaults = lspconfig.util.default_config
-      lsp_defaults.capabilities = vim.tbl_deep_extend(
-        "force",
-        lsp_defaults.capabilities,
-        cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      )
+      lsp_defaults.capabilities =
+        vim.tbl_deep_extend("force", lsp_defaults.capabilities, cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities()))
 
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
@@ -52,56 +48,16 @@ return {
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, utils.remap_opt("[g]o to [D]eclaration", true))
-        vim.keymap.set(
-          "n",
-          "<leader>gd",
-          "<CMD>Telescope lsp_definitions<CR>",
-          utils.remap_opt("[g]o to [d]definitions", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>gr",
-          "<CMD>Telescope lsp_references<CR>",
-          utils.remap_opt("[g]o to [r]eferences", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>gi",
-          "<CMD>Telescope lsp_implementations<CR>",
-          utils.remap_opt("[g]o to [i]mplementations", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>gt",
-          "<CMD>Telescope lsp_type_definitions<CR>",
-          utils.remap_opt("[g]o to [t]ype definitions", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>K",
-          vim.lsp.buf.hover,
-          utils.remap_opt("open floating information under cursor", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>k",
-          vim.lsp.buf.signature_help,
-          utils.remap_opt("open floating singature under cursor", true)
-        )
-        vim.keymap.set(
-          "n",
-          "<leader>ca",
-          vim.lsp.buf.code_action,
-          utils.remap_opt("[c]ode [a]ction under cursor", true)
-        )
+        vim.keymap.set("n", "<leader>gd", "<CMD>Telescope lsp_definitions<CR>", utils.remap_opt("[g]o to [d]definitions", true))
+        vim.keymap.set("n", "<leader>gr", "<CMD>Telescope lsp_references<CR>", utils.remap_opt("[g]o to [r]eferences", true))
+        vim.keymap.set("n", "<leader>gi", "<CMD>Telescope lsp_implementations<CR>", utils.remap_opt("[g]o to [i]mplementations", true))
+        vim.keymap.set("n", "<leader>gt", "<CMD>Telescope lsp_type_definitions<CR>", utils.remap_opt("[g]o to [t]ype definitions", true))
+        vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, utils.remap_opt("open floating information under cursor", true))
+        vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, utils.remap_opt("open floating singature under cursor", true))
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, utils.remap_opt("[c]ode [a]ction under cursor", true))
 
         -- Diagnostics
-        vim.keymap.set(
-          "n",
-          "<leader>e",
-          vim.diagnostic.open_float,
-          utils.remap_opt("open floating diagnostic message", true)
-        )
+        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, utils.remap_opt("open floating diagnostic message", true))
         vim.keymap.set("n", "[d", function()
           vim.diagnostic.goto_next()
         end, utils.remap_opt("go to next diagnostic", true))
@@ -113,6 +69,9 @@ return {
           vim.lsp.buf.format()
         end, { desc = "Format current buffer with LSP" })
       end
+
+      -- ensure servers are installed
+      require("mason-tool-installer").setup { ensure_installed = utils.ensure_installed_lsp }
 
       mason_lspconfig.setup()
       mason_lspconfig.setup_handlers {
