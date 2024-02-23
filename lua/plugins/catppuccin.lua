@@ -5,7 +5,7 @@ return {
   priority = 1000,
   opts = function()
     return {
-      flavour = "macchiato", -- latte, frappe, macchiato, mocha
+      flavour = "frappe", -- latte, frappe, macchiato, mocha
       background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -23,6 +23,9 @@ return {
       },
       color_overrides = {
         mocha = {
+          -- base = "#1A1A2F",
+        },
+        frappe = {
           base = "#1A1A2F",
         },
       },

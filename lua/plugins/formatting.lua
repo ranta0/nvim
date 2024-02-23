@@ -30,6 +30,6 @@ return {
         async = false,
         timeout_ms = 1000,
       })
-    end, utils.remap_opt("file [f]ormat", true))
+    end, utils.remap_opt("[m]ode file [f]ormat", true))
   end,
 }

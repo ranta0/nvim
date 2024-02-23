@@ -23,6 +23,6 @@ return {
 
     vim.keymap.set("n", "<leader>ml", function()
       lint.try_lint()
-    end, utils.remap_opt("[l]inting for current file", true))
+    end, utils.remap_opt("[m]ode [l]inting for current file", true))
   end,
 }

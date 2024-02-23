@@ -73,16 +73,16 @@ return {
 
   {
     "stevearc/oil.nvim",
-    config = function()
-      local opts = {
-        default_file_explorer = false,
-        keymaps = {
-          ["<C-t>"] = false,
-          ["<C-h>"] = false,
-          ["<C-l>"] = false,
-          ["<C-r>"] = "actions.refresh",
-        },
-      }
+    opts = {
+      default_file_explorer = false,
+      keymaps = {
+        ["<C-t>"] = false,
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["<C-r>"] = "actions.refresh",
+      },
+    },
+    config = function(_, opts)
       require("oil").setup(opts)
 
       vim.keymap.set("n", "<leader>-", require("oil").open, utils.remap_opt("open parent dir", true))

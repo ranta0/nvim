@@ -64,9 +64,9 @@ return {
           vim.diagnostic.goto_prev()
         end, utils.remap_opt("go to next diagnostic", true))
 
-        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+        vim.keymap.set("n", "<leader>mF", function()
           vim.lsp.buf.format()
-        end, utils.remap_opt("Format current buffer with LSP", true))
+        end, utils.remap_opt("[m]ode [F]ormat using lsp", true))
       end
 
       -- ensure servers are installed
