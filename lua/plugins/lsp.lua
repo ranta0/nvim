@@ -81,6 +81,17 @@ return {
           })
         end,
         -- Next, you can provide targeted overrides for specific servers.
+        ["intelephense"] = function()
+          lspconfig.intelephense.setup({
+            on_attach = on_attach,
+            capabilities = lsp_defaults.capabilities,
+            settings = {
+              intelephense = {
+                enviroment = { version = "8.3.0" },
+              },
+            },
+          })
+        end,
         ["lua_ls"] = function()
           lspconfig.lua_ls.setup({
             on_attach = on_attach,
