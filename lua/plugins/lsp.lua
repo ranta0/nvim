@@ -2,6 +2,11 @@ local utils = require("utils")
 
 return {
   {
+    "folke/neodev.nvim",
+    opts = {},
+  },
+
+  {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
     opts = {
@@ -92,14 +97,20 @@ return {
             },
           })
         end,
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup({
+        ["eslint"] = function()
+          -- Note: If working with a repository where eslint is specified in the package.json
+          -- but the node_modules are not installed, install eslint globally: npm i -g eslint
+          lspconfig.eslint.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
-            settings = {
-              workspace = { checkThirdParty = false },
-              telemetry = { enable = false },
-              -- diagnostics = { disable = { 'missing-fields' } },
+            root_dir = lspconfig.util.root_pattern(".eslintrc.js", "node_modules", ".git"),
+            filetypes = {
+              "vue",
+              "javascript",
+              "typescript",
+              "jsx",
+              "tsx",
+              "vue",
             },
           })
         end,
@@ -217,10 +228,5 @@ return {
         end,
       })
     end,
-  },
-
-  {
-    "folke/neodev.nvim",
-    opts = {},
   },
 }
