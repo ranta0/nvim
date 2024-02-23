@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   {
@@ -22,10 +22,10 @@ return {
       }
     end,
     config = function(_, opts)
-      local telescope = require "telescope"
+      local telescope = require("telescope")
 
       telescope.setup(opts)
-      local builtin = require "telescope.builtin"
+      local builtin = require("telescope.builtin")
 
       vim.keymap.set("n", "<leader>?", builtin.oldfiles, utils.remap_opt("find recently opened files", true))
       vim.keymap.set("n", "<leader><space>", builtin.buffers, utils.remap_opt("find existing buffers", true))

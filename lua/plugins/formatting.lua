@@ -1,13 +1,13 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   "stevearc/conform.nvim",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local conform = require "conform"
+    local conform = require("conform")
 
-    conform.setup {
+    conform.setup({
       formatters_by_ft = {
         javascript = { "prettier" },
         typescript = { "prettier" },
@@ -22,14 +22,14 @@ return {
         lua = { "stylua" },
         sh = { "shfmt" },
       },
-    }
+    })
 
     vim.keymap.set({ "n", "v" }, "<leader>mf", function()
-      conform.format {
+      conform.format({
         lsp_fallback = true,
         async = false,
         timeout_ms = 1000,
-      }
+      })
     end, utils.remap_opt("file [f]ormat", true))
   end,
 }

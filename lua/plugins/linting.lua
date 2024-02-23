@@ -1,11 +1,11 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   "mfussenegger/nvim-lint",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lint = require "lint"
+    local lint = require("lint")
 
     lint.linters_by_ft = {
       markdown = { "markdownlint" },

@@ -5,7 +5,7 @@ return {
   priority = 1000,
   opts = function()
     return {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      flavour = "macchiato", -- latte, frappe, macchiato, mocha
       background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -50,6 +50,6 @@ return {
   end,
   config = function(_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme("catppuccin")
   end,
 }

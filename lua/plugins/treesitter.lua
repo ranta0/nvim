@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   {
@@ -42,7 +42,7 @@ return {
       }
     end,
     config = function(_, opts)
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
+      pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 
       require("nvim-treesitter.configs").setup(opts)
     end,

@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   {
@@ -45,7 +45,7 @@ return {
       },
     },
     config = function()
-      vim.opt.undodir = os.getenv "HOME" .. "/.vim/undodir"
+      vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
     end,
   },
 

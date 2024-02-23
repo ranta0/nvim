@@ -36,6 +36,7 @@ M.ensure_installed_lsp = {
   "prettierd",
   "stylua",
   "intelephense",
+  "tsserver",
 }
 
 function M.remap_opt(desc, silent)

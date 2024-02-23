@@ -34,19 +34,19 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
-      local cmp = require "cmp"
+      local cmp = require("cmp")
       local options = {
         preselect = cmp.PreselectMode.None,
         window = {
           completion = {
-            border = border "CmpBorder",
+            border = border("CmpBorder"),
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
             scrolloff = 0,
             side_padding = 0,
             col_offset = 0,
           },
           documentation = {
-            border = border "CmpDocBorder",
+            border = border("CmpDocBorder"),
             scrolloff = 0,
             side_padding = 0,
             col_offset = 0,
@@ -57,12 +57,12 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        mapping = cmp.mapping.preset.insert {
+        mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete {},
+          ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-c>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm { select = true },
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
           ["<Tab>"] = function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -77,7 +77,7 @@ return {
               fallback()
             end
           end,
-        },
+        }),
         sources = {
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
@@ -88,7 +88,7 @@ return {
         },
       }
 
-      local cmp_window = require "cmp.utils.window"
+      local cmp_window = require("cmp.utils.window")
       cmp_window.info_ = cmp_window.info
       ---@diagnostic disable-next-line: duplicate-set-field
       cmp_window.info = function(self)

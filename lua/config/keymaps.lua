@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

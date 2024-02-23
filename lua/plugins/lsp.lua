@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   {
@@ -27,15 +27,14 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "towolf/vim-helm",
     },
     config = function(_, _)
-      local lspconfig = require "lspconfig"
-      local cmp_nvim_lsp = require "cmp_nvim_lsp"
-      local mason_lspconfig = require "mason-lspconfig"
+      local lspconfig = require("lspconfig")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local mason_lspconfig = require("mason-lspconfig")
 
       -- NOTE: make sure to setup neodev BEFORE lspconfig
-      require("neodev").setup {}
+      require("neodev").setup({})
 
       local lsp_defaults = lspconfig.util.default_config
       lsp_defaults.capabilities =
@@ -67,40 +66,34 @@ return {
 
         vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
           vim.lsp.buf.format()
-        end, { desc = "Format current buffer with LSP" })
+        end, utils.remap_opt("Format current buffer with LSP", true))
       end
 
       -- ensure servers are installed
-      require("mason-tool-installer").setup { ensure_installed = utils.ensure_installed_lsp }
+      require("mason-tool-installer").setup({ ensure_installed = utils.ensure_installed_lsp })
 
       mason_lspconfig.setup()
-      mason_lspconfig.setup_handlers {
+      mason_lspconfig.setup_handlers({
         function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {
+          require("lspconfig")[server_name].setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
-          }
+          })
         end,
         -- Next, you can provide targeted overrides for specific servers.
-        ["helm_ls"] = function()
-          lspconfig.helm_ls.setup {
+        ["lua_ls"] = function()
+          lspconfig.lua_ls.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
-            filetypes = { "helm_ls", "serve" },
-            root_dir = function(fname)
-              return lspconfig.util.root_pattern "Chart.yaml"(fname)
-            end,
-          }
-        end,
-        ["cssls"] = function()
-          lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
-          lspconfig.cssls.setup {
-            on_attach = on_attach,
-            capabilities = lsp_defaults.capabilities,
-          }
+            settings = {
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          })
         end,
         ["emmet_ls"] = function()
-          lspconfig.emmet_ls.setup {
+          lspconfig.emmet_ls.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             filetypes = {
@@ -117,11 +110,11 @@ return {
               "gohtml",
               "tmpl.html",
             },
-          }
+          })
         end,
         ["html"] = function()
           lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
-          lspconfig.html.setup {
+          lspconfig.html.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             filetypes = {
@@ -132,17 +125,17 @@ return {
               "gohtml",
               "tmpl.html",
             },
-          }
+          })
         end,
         ["jsonls"] = function()
           lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
-          lspconfig.jsonls.setup {
+          lspconfig.jsonls.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
-          }
+          })
         end,
         ["tsserver"] = function()
-          lspconfig.tsserver.setup {
+          lspconfig.tsserver.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             filetypes = {
@@ -153,10 +146,10 @@ return {
               "jsx",
               "tsx",
             },
-          }
+          })
         end,
         ["rust_analyzer"] = function()
-          lspconfig.rust_analyzer.setup {
+          lspconfig.rust_analyzer.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             settings = {
@@ -176,11 +169,11 @@ return {
                 },
               },
             },
-          }
+          })
           -- require("rust-tools").setup {}
         end,
         ["pyright"] = function()
-          lspconfig.pyright.setup {
+          lspconfig.pyright.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             settings = {
@@ -192,10 +185,10 @@ return {
                 },
               },
             },
-          }
+          })
         end,
         ["gopls"] = function()
-          lspconfig.gopls.setup {
+          lspconfig.gopls.setup({
             on_attach = on_attach,
             capabilities = lsp_defaults.capabilities,
             cmd = { "gopls", "serve" },
@@ -209,9 +202,9 @@ return {
                 staticcheck = true,
               },
             },
-          }
+          })
         end,
-      }
+      })
     end,
   },
 
