@@ -81,6 +81,9 @@ return {
         ["<C-l>"] = false,
         ["<C-r>"] = "actions.refresh",
       },
+      view_options = {
+        show_hidden = true,
+      },
     },
     config = function(_, opts)
       require("oil").setup(opts)

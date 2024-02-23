@@ -8,7 +8,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 vim.diagnostic.config({
   virtual_text = false,
   float = {
-    focusable = false,
+    focusable = true,
     border = "rounded",
     source = "always",
     header = "",
