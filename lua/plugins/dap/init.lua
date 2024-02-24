@@ -14,10 +14,6 @@ return {
 
     require("mason-nvim-dap").setup({
       automatic_setup = true,
-      ensure_installed = {
-        -- "delve",
-        -- "php-debug-adapter",
-      },
     })
 
     -- Basic debugging keymaps
@@ -74,97 +70,23 @@ return {
     end, utils.remap_opt("[d]ebug float [s]copes", true))
 
     dapui.setup({
-      icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
-      controls = {
-        icons = {
-          pause = "⏸",
-          play = "▶",
-          step_into = "⏎",
-          step_over = "⏭",
-          step_out = "⏮",
-          step_back = "b",
-          run_last = "▶▶",
-          terminate = "⏹",
-          disconnect = "⏏",
-        },
-      },
+      icons = utils.dap_icons,
+      controls = utils.dap_icons_controls,
     })
 
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
     dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-    -- Go
-    -- Configuration
-    dap.adapters.delve = {
-      type = "server",
-      port = "${port}",
-      executable = {
-        command = "dlv",
-        args = { "dap", "-l", "127.0.0.1:${port}" },
-      },
-    }
+    -- Enabled adapters and configurations
+    local adapters = require("plugins.dap.adapters")
+    for index, value in pairs(adapters) do
+      dap.adapters[index] = value
+    end
 
-    -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
-    dap.configurations.go = {
-      {
-        type = "delve",
-        name = "Debug",
-        request = "launch",
-        program = "${file}",
-      },
-      {
-        type = "delve",
-        name = "Debug test", -- configuration for debugging test files
-        request = "launch",
-        mode = "test",
-        program = "${file}",
-      },
-      -- works with go.mod packages and sub packages
-      {
-        type = "delve",
-        name = "Debug test (go.mod)",
-        request = "launch",
-        mode = "test",
-        program = "./${relativeFileDirname}",
-      },
-    }
-
-    -- Note in case you must listen to a docker image add this to the service in the docker-compose
-    --  extra_hosts:
-    --  - "host.docker.internal:host-gateway"
-    dap.adapters.php = {
-      type = "executable",
-      command = "node",
-      args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
-    }
-
-    dap.configurations.php = {
-      {
-        name = "Run current script",
-        type = "php",
-        request = "launch",
-        port = 9004,
-        cwd = "${fileDirname}",
-        program = "${file}",
-        runtimeExecutable = "php",
-      },
-      {
-        name = "Listen for Xdebug local",
-        type = "php",
-        request = "launch",
-        port = 9004,
-      },
-      {
-        name = "Listen for Xdebug docker",
-        type = "php",
-        request = "launch",
-        port = 9004,
-        -- this is where your file is in the container
-        pathMappings = {
-          ["/var/www/app"] = "${workspaceFolder}",
-        },
-      },
-    }
+    local configurations = require("plugins.dap.configurations")
+    for index, value in pairs(configurations) do
+      dap.configurations[index] = value
+    end
   end,
 }

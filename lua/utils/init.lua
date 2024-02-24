@@ -13,6 +13,26 @@ M.mason_signs = {
   Failed = "✗",
 }
 
+M.dap_icons = {
+  expanded = "▾",
+  collapsed = "▸",
+  current_frame = "*",
+}
+
+M.dap_icons_controls = {
+  icons = {
+    pause = "⏸",
+    play = "▶",
+    step_into = "⏎",
+    step_over = "⏭",
+    step_out = "⏮",
+    step_back = "b",
+    run_last = "▶▶",
+    terminate = "⏹",
+    disconnect = "⏏",
+  },
+}
+
 M.ensure_installed_hl = {
   "markdown",
   "tsx",
@@ -29,7 +49,7 @@ M.ensure_installed_hl = {
   "bash",
 }
 
-M.ensure_installed_lsp = {
+M.ensure_installed_mason = {
   "css-lsp",
   "lua-language-server",
   "prettier",
@@ -37,6 +57,8 @@ M.ensure_installed_lsp = {
   "stylua",
   "intelephense",
   "tsserver",
+  -- "delve",
+  -- "php-debug-adapter",
 }
 
 function M.remap_opt(desc, silent)
