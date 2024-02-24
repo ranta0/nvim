@@ -29,6 +29,7 @@ vim.keymap.set("n", "gf", "<C-w>gf")
 vim.keymap.set("n", "<C-t>", ":tabnew<CR>")
 vim.keymap.set("n", "<C-l>", "gt")
 vim.keymap.set("n", "<C-h>", "gT")
+vim.keymap.set("n", "<leader>tb", "<CMD>tabe %<CR>", utils.remap_opt("put a buffer in a new tab, :q to exit", true))
 
 vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 
