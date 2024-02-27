@@ -10,7 +10,7 @@ vim.o.smartindent = true
 
 vim.o.wrap = false
 vim.o.list = true
-vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append("eol:↴")
 
 vim.o.swapfile = false
 vim.o.backup = false
