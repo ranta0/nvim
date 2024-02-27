@@ -57,6 +57,7 @@ M.ensure_installed_mason = {
   "stylua",
   "intelephense",
   "tsserver",
+  "shfmt",
   -- "delve",
   -- "php-debug-adapter",
 }
