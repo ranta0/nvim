@@ -34,6 +34,7 @@ M.dap_icons_controls = {
 }
 
 M.ensure_installed_hl = {
+  "vimdoc",
   "markdown",
   "tsx",
   "typescript",

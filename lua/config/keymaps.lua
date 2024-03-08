@@ -31,7 +31,7 @@ vim.keymap.set("n", "<C-l>", "gt")
 vim.keymap.set("n", "<C-h>", "gT")
 vim.keymap.set("n", "<leader>tb", "<CMD>tabe %<CR>", utils.remap_opt("put a buffer in a new tab, :q to exit", true))
 
-vim.keymap.set("n", "<C-a>", "ggVG<cr>")
+-- vim.keymap.set("n", "<C-a>", "ggVG<cr>")
 
 vim.keymap.set("n", "tr", [[:%s///gn<CR>``cgn]], utils.remap_opt("replace value after search under cursor, . to continue", true))
 vim.keymap.set("n", "tR", [[:%s///gn<CR>``cgN]], utils.remap_opt("replace value after search under cursor, . to continue backwards", true))
