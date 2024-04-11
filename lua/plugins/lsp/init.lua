@@ -78,6 +78,9 @@ return {
       require("mason-tool-installer").setup({ ensure_installed = utils.ensure_installed_mason })
       local servers = require("plugins.lsp.servers")
 
+      -- mason independent
+      servers.dartls(lspconfig, on_attach, lsp_defaults)
+
       mason_lspconfig.setup()
       mason_lspconfig.setup_handlers({
         function(server_name) -- default handler (optional)
@@ -91,10 +94,10 @@ return {
         ["intelephense"] = function()
           servers.intelephense(lspconfig, on_attach, lsp_defaults)
         end,
-        ["eslint"] = function ()
+        ["eslint"] = function()
           servers.eslint(lspconfig, on_attach, lsp_defaults)
         end,
-        ["helm_ls"] = function ()
+        ["helm_ls"] = function()
           servers.helm_ls(lspconfig, on_attach, lsp_defaults)
         end,
         ["emmet_ls"] = function()

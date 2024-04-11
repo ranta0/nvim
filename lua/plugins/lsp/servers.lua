@@ -1,3 +1,5 @@
+local util = require("lspconfig.util")
+
 return {
   eslint = function(lspconfig, on_attach, lsp_defaults)
     -- Note: If working with a repository where eslint is specified in the package.json
@@ -5,7 +7,7 @@ return {
     lspconfig.eslint.setup({
       on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
-      root_dir = lspconfig.util.root_pattern(".eslintrc.js", "node_modules", ".git"),
+      root_dir = util.root_pattern(".eslintrc.js", "node_modules", ".git"),
       filetypes = {
         "vue",
         "javascript",
@@ -75,7 +77,19 @@ return {
   end,
 
   tsserver = function(lspconfig, on_attach, lsp_defaults)
+    local mason_registry = require("mason-registry")
+    local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language-server"
+
     lspconfig.tsserver.setup({
+      init_options = {
+        plugins = {
+          {
+            name = "@vue/typescript-plugin",
+            location = vue_language_server_path,
+            languages = { "vue" },
+          },
+        },
+      },
       on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       filetypes = {
@@ -85,6 +99,7 @@ return {
         "typescriptreact",
         "jsx",
         "tsx",
+        "vue",
       },
     })
   end,
@@ -136,7 +151,7 @@ return {
       capabilities = lsp_defaults.capabilities,
       cmd = { "gopls", "serve" },
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
-      root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+      root_dir = util.root_pattern("go.work", "go.mod", ".git"),
       settings = {
         gopls = {
           analyses = {
@@ -154,8 +169,32 @@ return {
       capabilities = lsp_defaults.capabilities,
       filetypes = { "helm_ls", "serve" },
       root_dir = function(fname)
-        return lspconfig.util.root_pattern("Chart.yaml")(fname)
+        return util.root_pattern("Chart.yaml")(fname)
       end,
+    })
+  end,
+
+  -- not mason related
+  dartls = function(lspconfig, on_attach, lsp_defaults)
+    lspconfig.dartls.setup({
+      on_attach = on_attach,
+      capabilities = lsp_defaults.capabilities,
+      cmd = { "dart", "language-server", "--protocol=lsp" },
+      filetypes = { "dart" },
+      root_dir = util.root_pattern("pubspec.yaml"),
+      init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = true,
+        closingLabels = true,
+        outline = true,
+        flutterOutline = true,
+      },
+      settings = {
+        dart = {
+          completeFunctionCalls = true,
+          showTodos = true,
+        },
+      },
     })
   end,
 }
