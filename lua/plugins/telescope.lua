@@ -28,7 +28,6 @@ return {
       local builtin = require("telescope.builtin")
 
       vim.keymap.set("n", "<leader>?", builtin.oldfiles, utils.remap_opt("find recently opened files", true))
-      vim.keymap.set("n", "<leader><space>", builtin.buffers, utils.remap_opt("find existing buffers", true))
       vim.keymap.set("n", "<leader>sf", builtin.find_files, utils.remap_opt("[s]earch [f]iles", true))
       vim.keymap.set("n", "<leader>sh", "<CMD>Telescope find_files hidden=true<CR>", utils.remap_opt("[s]earch [h]idden", true))
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, utils.remap_opt("[s]earch by [g]rep", true))
