@@ -13,6 +13,7 @@ return {
           mappings = {
             i = {
               ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+              ["<C-q>"] = require("telescope.actions").send_to_qflist,
             },
           },
           preview = {
