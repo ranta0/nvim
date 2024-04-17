@@ -121,6 +121,9 @@ return {
         ["gopls"] = function()
           servers.gopls(lspconfig, on_attach, lsp_defaults)
         end,
+        ["lua_ls"] = function()
+          servers.lua_ls(lspconfig, on_attach, lsp_defaults)
+        end,
       })
     end,
   },

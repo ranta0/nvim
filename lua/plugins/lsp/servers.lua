@@ -174,6 +174,21 @@ return {
     })
   end,
 
+  lua_ls = function(lspconfig, on_attach, lsp_defaults)
+    lspconfig.lua_ls.setup({
+      on_attach = on_attach,
+      capabilities = lsp_defaults.capabilities,
+      settings = {
+        Lua = {
+          -- runtime = { version = "Lua 5.1" },
+          diagnostics = {
+            globals = { "vim", "it", "describe", "before_each", "after_each" },
+          },
+        },
+      },
+    })
+  end,
+
   -- not mason related
   dartls = function(lspconfig, on_attach, lsp_defaults)
     lspconfig.dartls.setup({
