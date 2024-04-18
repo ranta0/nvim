@@ -21,6 +21,7 @@ vim.o.incsearch = true
 vim.o.termguicolors = true
 
 vim.o.updatetime = 50
+vim.o.lazyredraw = true
 
 vim.o.colorcolumn = "80"
 vim.o.signcolumn = "yes:2"
