@@ -33,7 +33,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
-    config = function(_, _)
+    config = function()
       local lspconfig = require("lspconfig")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local mason_lspconfig = require("mason-lspconfig")
@@ -56,8 +56,12 @@ return {
         vim.keymap.set("n", "<leader>gr", "<CMD>Telescope lsp_references<CR>", utils.remap_opt("[g]o to [r]eferences", true))
         vim.keymap.set("n", "<leader>gi", "<CMD>Telescope lsp_implementations<CR>", utils.remap_opt("[g]o to [i]mplementations", true))
         vim.keymap.set("n", "<leader>gt", "<CMD>Telescope lsp_type_definitions<CR>", utils.remap_opt("[g]o to [t]ype definitions", true))
-        vim.keymap.set("n", "<leader>rp", function() vim.lsp.buf.rename() end, utils.remap_opt("[r]ename string [p]roject wide", true))
-        vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, utils.remap_opt("[w]orkspace [s]ymbol", true))
+        vim.keymap.set("n", "<leader>rp", function()
+          vim.lsp.buf.rename()
+        end, utils.remap_opt("[r]ename string [p]roject wide", true))
+        vim.keymap.set("n", "<leader>ws", function()
+          vim.lsp.buf.workspace_symbol()
+        end, utils.remap_opt("[w]orkspace [s]ymbol", true))
         vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, utils.remap_opt("open floating information under cursor", true))
         vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, utils.remap_opt("open floating singature under cursor", true))
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, utils.remap_opt("[c]ode [a]ction under cursor", true))
