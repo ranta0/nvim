@@ -15,6 +15,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", "$", "$h")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -40,3 +41,4 @@ vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", utils.remap_opt("remove trai
 vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", utils.remap_opt("[t]oggle [w]rap", true))
 vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>", utils.remap_opt("[t]oggle relative[n]umber", true))
 vim.keymap.set("n", "<leader>th", ":set hls!<CR>", utils.remap_opt("[t]oggle [h]lsearch", true))
+vim.keymap.set("n", "<leader>tp", ":set paste!<CR>", utils.remap_opt("[t]oggle [p]aste", true))
