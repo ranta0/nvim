@@ -18,7 +18,7 @@ return {
     local config = {
       options = {
         icons_enabled = false,
-        theme = "catppuccin",
+        theme = "nightfox",
         component_separators = "|",
         section_separators = "",
       },
