@@ -3,7 +3,7 @@ local utils = require("utils")
 return {
   "mfussenegger/nvim-lint",
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile", "SessionLoadPost" },
   config = function()
     local lint = require("lint")
 

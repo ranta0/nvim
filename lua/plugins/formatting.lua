@@ -3,7 +3,7 @@ local utils = require("utils")
 return {
   "stevearc/conform.nvim",
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile", "SessionLoadPost" },
   config = function()
     local conform = require("conform")
 
