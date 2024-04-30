@@ -17,7 +17,8 @@ return {
             },
           },
           preview = {
-            hide_on_startup = true, -- hide previewer when picker starts
+            -- hide previewer when picker starts
+            hide_on_startup = true,
           },
         },
       }
@@ -36,6 +37,9 @@ return {
 
       -- override default spell_suggest
       vim.keymap.set("n", "z=", "<CMD>silent Telescope spell_suggest<CR>", utils.remap_opt("spell suggestion", true))
+
+      -- diagnostics
+      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, utils.remap_opt("[s]earch [d]iagnostics", true))
     end,
   },
 }
