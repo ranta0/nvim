@@ -27,7 +27,7 @@ vim.o.colorcolumn = "80"
 vim.o.signcolumn = "yes:2"
 
 -- session
-vim.o.sessionoptions = "buffers,tabpages,options"
+vim.o.sessionoptions = "buffers,tabpages,options,folds"
 
 vim.g.session_dir = os.getenv("HOME") .. "/.vim/sessionsdir"
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
