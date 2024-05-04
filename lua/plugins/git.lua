@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require("utils")
 
 return {
   "tpope/vim-fugitive",
@@ -20,7 +20,7 @@ return {
       current_line_blame = true,
     },
     config = function(_, opts)
-      local gitsigns = require "gitsigns"
+      local gitsigns = require("gitsigns")
       gitsigns.setup(opts)
 
       vim.keymap.set("n", "]h", gitsigns.next_hunk, utils.remap_opt("git next hunk", true))

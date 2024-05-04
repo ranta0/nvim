@@ -1,16 +1,3 @@
-local function border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
 return {
   {
     "L3MON4D3/LuaSnip",
@@ -38,19 +25,8 @@ return {
       local options = {
         preselect = cmp.PreselectMode.None,
         window = {
-          completion = {
-            border = border("CmpBorder"),
-            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-            scrolloff = 0,
-            side_padding = 0,
-            col_offset = 0,
-          },
-          documentation = {
-            border = border("CmpDocBorder"),
-            scrolloff = 0,
-            side_padding = 0,
-            col_offset = 0,
-          },
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
         snippet = {
           expand = function(args)
@@ -83,19 +59,9 @@ return {
           { name = "nvim_lsp_signature_help" },
           { name = "luasnip" },
           { name = "buffer" },
-          -- { name = "nvim_lua" },
           { name = "path" },
         },
       }
-
-      local cmp_window = require("cmp.utils.window")
-      cmp_window.info_ = cmp_window.info
-      ---@diagnostic disable-next-line: duplicate-set-field
-      cmp_window.info = function(self)
-        local info = self:info_()
-        info.scrollable = false
-        return info
-      end
 
       -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline("/", {

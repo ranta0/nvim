@@ -16,7 +16,6 @@ return {
 
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     opts = {},
   },
 
@@ -32,6 +31,17 @@ return {
     lazy = false,
     config = function()
       vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+    end,
+  },
+
+  {
+    "rmagatti/auto-session",
+    config = function()
+      require("auto-session").setup({
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/" },
+        auto_session_root_dir = os.getenv("HOME") .. "/.vim/sessionsdir/",
+      })
     end,
   },
 
