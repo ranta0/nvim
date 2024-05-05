@@ -40,6 +40,9 @@ return {
 
       -- diagnostics
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, utils.remap_opt("[s]earch [d]iagnostics", true))
+
+      -- sessions
+      vim.keymap.set("n", "<leader>ss", require("auto-session.session-lens").search_session, utils.remap_opt("[s]earch [d]iagnostics", true))
     end,
   },
 }
