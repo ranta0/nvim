@@ -37,8 +37,18 @@ vim.keymap.set("c", "<C-p>", "<Up>", { silent = false })
 vim.keymap.set("c", "<C-n>", "<Down>", { silent = false })
 
 -- tools
-vim.keymap.set("n", "tr", [[:%s///gn<CR>``cgn]], utils.remap_opt("replace value after search under cursor, . to continue", true))
-vim.keymap.set("n", "tR", [[:%s///gn<CR>``cgN]], utils.remap_opt("replace value after search under cursor, . to continue backwards", true))
+vim.keymap.set(
+  "n",
+  "tr",
+  [[:%s///gn<CR>``cgn]],
+  utils.remap_opt("replace value after search under cursor, . to continue", true)
+)
+vim.keymap.set(
+  "n",
+  "tR",
+  [[:%s///gn<CR>``cgN]],
+  utils.remap_opt("replace value after search under cursor, . to continue backwards", true)
+)
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", utils.remap_opt("remove trailing characters", true))
 
 -- toggles

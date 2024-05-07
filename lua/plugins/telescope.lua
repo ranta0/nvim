@@ -31,7 +31,12 @@ return {
 
       vim.keymap.set("n", "<leader>?", builtin.oldfiles, utils.remap_opt("find recently opened files", true))
       vim.keymap.set("n", "<leader>sf", builtin.find_files, utils.remap_opt("[s]earch [f]iles", true))
-      vim.keymap.set("n", "<leader>sh", "<CMD>Telescope find_files hidden=true<CR>", utils.remap_opt("[s]earch [h]idden", true))
+      vim.keymap.set(
+        "n",
+        "<leader>sh",
+        "<CMD>Telescope find_files hidden=true<CR>",
+        utils.remap_opt("[s]earch [h]idden", true)
+      )
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, utils.remap_opt("[s]earch by [g]rep", true))
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, utils.remap_opt("[s]earch current [w]ord", true))
 
@@ -42,7 +47,12 @@ return {
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, utils.remap_opt("[s]earch [d]iagnostics", true))
 
       -- sessions
-      vim.keymap.set("n", "<leader>ss", require("auto-session.session-lens").search_session, utils.remap_opt("[s]earch [d]iagnostics", true))
+      vim.keymap.set(
+        "n",
+        "<leader>ss",
+        require("auto-session.session-lens").search_session,
+        utils.remap_opt("[s]earch [s]essions", true)
+      )
     end,
   },
 }

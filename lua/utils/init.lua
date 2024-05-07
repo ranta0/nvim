@@ -56,9 +56,9 @@ M.ensure_installed_mason = {
   "prettier",
   "prettierd",
   "stylua",
-  "intelephense",
   "tsserver",
   "shfmt",
+  -- "intelephense",
   -- "delve",
   -- "php-debug-adapter",
 }

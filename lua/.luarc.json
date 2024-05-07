@@ -27,5 +27,15 @@
         "/home/ranta/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
         "/home/ranta/.config/nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "it",
+        "describe",
+        "before_each",
+        "after_each",
+    ],
+    "diagnostics.disable": [
+        "missing-parameter"
     ]
 }

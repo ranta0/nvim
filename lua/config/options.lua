@@ -24,4 +24,6 @@ vim.o.updatetime = 50
 vim.o.lazyredraw = true
 
 vim.o.colorcolumn = "80"
-vim.o.signcolumn = "yes:2"
+vim.o.signcolumn = "yes:4"
+
+vim.opt.scrolloff = 8

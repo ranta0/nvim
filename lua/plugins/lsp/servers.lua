@@ -31,6 +31,16 @@ return {
     })
   end,
 
+  psalm = function(lspconfig, on_attach, lsp_defaults)
+    lspconfig.psalm.setup({
+      on_attach = on_attach,
+      capabilities = lsp_defaults.capabilities,
+      cmd = { "psalm", "--language-server" },
+      filetypes = { "php" },
+      root_dir = util.root_pattern("psalm.xml", "psalm.xml.dist"),
+    })
+  end,
+
   emmet_ls = function(lspconfig, on_attach, lsp_defaults)
     lspconfig.emmet_ls.setup({
       on_attach = on_attach,
@@ -78,7 +88,8 @@ return {
 
   tsserver = function(lspconfig, on_attach, lsp_defaults)
     local mason_registry = require("mason-registry")
-    local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language-server"
+    local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+      .. "/node_modules/@vue/language-server"
 
     lspconfig.tsserver.setup({
       init_options = {
