@@ -54,7 +54,6 @@ M.ensure_installed_mason = {
   "css-lsp",
   "lua-language-server",
   "prettier",
-  "prettierd",
   "stylua",
   "tsserver",
   "shfmt",

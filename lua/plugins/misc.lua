@@ -4,7 +4,9 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {},
+    opts = {
+      indent = { char = "╎" },
+    },
   },
 
   "tpope/vim-sleuth",
@@ -46,28 +48,6 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
-    event = "BufReadPre",
-    opts = {
-      filetypes = { "*" },
-      user_default_options = {
-        RGB = true,
-        RRGGBB = true,
-        names = true,
-        RRGGBBAA = true,
-        AARRGGBB = false,
-        rgb_fn = true,
-        hsl_fn = true,
-        css = true,
-        css_fn = true,
-        mode = "background",
-        tailwind = true,
-        virtualtext = "■",
-      },
-    },
-  },
-
-  {
     "stevearc/oil.nvim",
     opts = {
       default_file_explorer = false,
@@ -84,7 +64,7 @@ return {
     config = function(_, opts)
       require("oil").setup(opts)
 
-      vim.keymap.set("n", "<leader>-", require("oil").open, utils.remap_opt("open parent dir", true))
+      vim.keymap.set("n", "<leader>-", require("oil").toggle_float, utils.remap_opt("open parent dir", true))
     end,
   },
 }
