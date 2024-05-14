@@ -41,7 +41,7 @@ return {
     config = function()
       require("auto-session").setup({
         log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/" },
+        auto_session_suppress_dirs = { "~/Documents", "~/Downloads"},
         auto_session_root_dir = os.getenv("HOME") .. "/.vim/sessionsdir/",
       })
     end,
@@ -64,7 +64,7 @@ return {
     config = function(_, opts)
       require("oil").setup(opts)
 
-      vim.keymap.set("n", "<leader>-", require("oil").toggle_float, utils.remap_opt("open parent dir", true))
+      vim.keymap.set("n", "<leader>-", require("oil").open, utils.remap_opt("open parent dir", true))
     end,
   },
 }
