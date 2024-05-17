@@ -117,7 +117,7 @@ return {
         )
 
         if vim.lsp.inlay_hint then
-          vim.keymap.set("n", "<leader>th", function()
+          vim.keymap.set("n", "<leader>ti", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end, utils.remap_opt("[t]oggle [i]nlay hints", true))
         end
