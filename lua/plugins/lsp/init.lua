@@ -87,48 +87,63 @@ return {
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, utils.remap_opt("[g]o to [D]eclaration", true))
+
         vim.keymap.set(
           "n",
           "<leader>gd",
           "<CMD>Telescope lsp_definitions<CR>",
           utils.remap_opt("[g]o to [d]definitions", true)
         )
+
         vim.keymap.set(
           "n",
           "<leader>gr",
           "<CMD>Telescope lsp_references<CR>",
           utils.remap_opt("[g]o to [r]eferences", true)
         )
+
         vim.keymap.set(
           "n",
           "<leader>gi",
           "<CMD>Telescope lsp_implementations<CR>",
           utils.remap_opt("[g]o to [i]mplementations", true)
         )
+
         vim.keymap.set(
           "n",
           "<leader>gt",
           "<CMD>Telescope lsp_type_definitions<CR>",
           utils.remap_opt("[g]o to [t]ype definitions", true)
         )
+
+        if vim.lsp.inlay_hint then
+          vim.keymap.set("n", "<leader>th", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end, utils.remap_opt("[t]oggle [i]nlay hints", true))
+        end
+
         vim.keymap.set("n", "<leader>rp", function()
           vim.lsp.buf.rename()
         end, utils.remap_opt("[r]ename string [p]roject wide", true))
+
         vim.keymap.set("n", "<leader>ws", function()
           vim.lsp.buf.workspace_symbol()
         end, utils.remap_opt("[w]orkspace [s]ymbol", true))
+
         vim.keymap.set(
           "n",
           "<leader>K",
           vim.lsp.buf.hover,
           utils.remap_opt("open floating information under cursor", true)
         )
+
         vim.keymap.set(
           "n",
           "<leader>k",
           vim.lsp.buf.signature_help,
           utils.remap_opt("open floating singature under cursor", true)
         )
+
         vim.keymap.set(
           "n",
           "<leader>ca",
@@ -143,9 +158,11 @@ return {
           vim.diagnostic.open_float,
           utils.remap_opt("open floating diagnostic message", true)
         )
+
         vim.keymap.set("n", "[d", function()
           vim.diagnostic.goto_next()
         end, utils.remap_opt("go to next diagnostic", true))
+
         vim.keymap.set("n", "]d", function()
           vim.diagnostic.goto_prev()
         end, utils.remap_opt("go to next diagnostic", true))

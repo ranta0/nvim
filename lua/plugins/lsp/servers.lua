@@ -195,6 +195,7 @@ return {
           diagnostics = {
             globals = { "vim", "it", "describe", "before_each", "after_each" },
           },
+          hint = { enable = true },
         },
       },
     })
