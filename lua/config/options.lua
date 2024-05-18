@@ -10,7 +10,13 @@ vim.o.smartindent = true
 
 vim.o.wrap = false
 vim.o.list = true
-vim.opt.listchars:append("eol:↴")
+vim.o.listchars = table.concat({
+  "tab:> ",
+  "trail:-",
+  "extends:>",
+  "precedes:<",
+  "nbsp:+",
+}, ",")
 
 vim.o.swapfile = false
 vim.o.backup = false
@@ -27,3 +33,4 @@ vim.o.colorcolumn = "80"
 vim.o.signcolumn = "yes:4"
 
 vim.opt.scrolloff = 8
+vim.g.netrw_liststyle = 3

@@ -8,7 +8,7 @@ return {
         section_separators = "",
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = {},
         lualine_b = {
           { "branch", color = { fg = "#ffffff", gui = "bold" } },
           "diff",
@@ -19,26 +19,24 @@ return {
           "filesize",
           {
             function()
-              local msg = "No Active Lsp"
-              local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-              local clients = vim.lsp.get_clients()
+              local clients = vim.lsp.get_active_clients({ bufnr = vim.fn.bufnr() })
+              if vim.fn.has("nvim-0.10") then
+                clients = vim.lsp.get_clients({ bufnr = vim.fn.bufnr() })
+              end
               if next(clients) == nil then
-                return msg
+                return "No Active Lsp"
               end
-              for _, client in ipairs(clients) do
-                -- find an other way...
-                local filetypes = client.config.filetypes
-                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                  return client.name
-                end
+              local names = {}
+              for _, lsp in ipairs(clients) do
+                table.insert(names, lsp.name)
               end
-              return msg
+              return table.concat(names, ", ")
             end,
             icon = "LSP:",
             color = { fg = "#ffffff", gui = "bold" },
           },
         },
-        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_x = { "filetype", "encoding", "fileformat" },
         lualine_y = { "progress" },
         lualine_z = {},
       },

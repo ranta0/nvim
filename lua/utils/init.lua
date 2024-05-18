@@ -51,13 +51,14 @@ M.ensure_installed_hl = {
 }
 
 M.ensure_installed_mason = {
-  "css-lsp",
   "lua-language-server",
-  "prettier",
-  "stylua",
-  "tsserver",
   "shfmt",
+  -- "prettier",
+  -- "stylua",
+  -- "tsserver",
   -- "intelephense",
+  -- "gopls",
+  -- "rust-analyzer",
   -- "delve",
   -- "php-debug-adapter",
 }
