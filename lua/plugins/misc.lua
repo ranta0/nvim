@@ -2,6 +2,13 @@ return {
   "tpope/vim-sleuth",
 
   {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, Config.remap_opt("[g]it [s]tatus", true))
+    end,
+  },
+
+  {
     "mbbill/undotree",
     keys = {
       {

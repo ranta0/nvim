@@ -1,16 +1,18 @@
 -- diagnostics
-local options = { border = "rounded", source = "always" }
+local options = {
+  -- border = "rounded",
+  source = "always",
+}
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, options)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, options)
 
 vim.diagnostic.config({
   virtual_text = false,
   float = {
+    -- border = "rounded",
     focusable = true,
-    border = "rounded",
     source = true,
     header = "",
-    -- prefix = "",
   },
   signs = true,
   underline = true,
@@ -59,28 +61,28 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      -- "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
-      -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local mason_lspconfig = require("mason-lspconfig")
 
       -- NOTE: make sure to setup neodev BEFORE lspconfig
       require("neodev").setup({})
 
       local lsp_defaults = lspconfig.util.default_config
-      -- lsp_defaults.capabilities = vim.tbl_deep_extend(
-      --   "force",
-      --   lsp_defaults.capabilities,
-      --   -- cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      -- )
+      lsp_defaults.capabilities = vim.tbl_deep_extend(
+        "force",
+        lsp_defaults.capabilities,
+        cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      )
 
-      local on_attach = function(_, bufnr)
+      local on_attach = function()
         -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -116,7 +118,7 @@ return {
 
         if vim.lsp.inlay_hint then
           vim.keymap.set("n", "<leader>ti", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
           end, Config.remap_opt("[t]oggle [i]nlay hints", true))
         end
 

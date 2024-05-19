@@ -21,9 +21,7 @@ return {
     }
   end,
   config = function(_, opts)
-    local telescope = require("telescope")
-
-    telescope.setup(opts)
+    require("telescope").setup(opts)
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "<leader>?", builtin.oldfiles, Config.remap_opt("find recently opened files", true))
@@ -36,6 +34,7 @@ return {
     )
     vim.keymap.set("n", "<leader>sg", builtin.live_grep, Config.remap_opt("[s]earch by [g]rep", true))
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, Config.remap_opt("[s]earch current [w]ord", true))
+    vim.keymap.set("n", "<leader><leader>", builtin.buffers, Config.remap_opt("[s]earch buffers", true))
 
     -- override default spell_suggest
     vim.keymap.set("n", "z=", "<CMD>silent Telescope spell_suggest<CR>", Config.remap_opt("spell suggestion", true))

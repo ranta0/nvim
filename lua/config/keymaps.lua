@@ -36,6 +36,10 @@ vim.keymap.set("c", "<C-n>", "<Down>", { silent = false })
 -- project files
 vim.keymap.set("n", "<leader>-", ":Ex<CR>")
 
+-- wildmenu
+-- vim.keymap.set("i", "<TAB>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true, silent = false })
+-- vim.keymap.set("i", "<S-TAB>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true, silent = false })
+
 -- tools
 vim.keymap.set(
   "n",
