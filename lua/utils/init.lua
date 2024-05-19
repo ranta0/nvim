@@ -51,17 +51,8 @@ Config.ensure_installed_hl = {
   "bash",
 }
 
-Config.ensure_installed_mason = {
-  "lua-language-server",
-  "shfmt",
-  -- "prettier",
-  -- "stylua",
-  -- "tsserver",
-  -- "intelephense",
-  -- "gopls",
-  -- "rust-analyzer",
-  -- "delve",
-  -- "php-debug-adapter",
+Config.bigfile = {
+  size_limit = 16 * 1024 * 1024, -- MB
 }
 
 Config.remap_opt = function(desc, silent)

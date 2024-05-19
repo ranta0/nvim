@@ -6,24 +6,21 @@ return {
     "rafamadriz/friendly-snippets",
   },
   config = function()
-    -- https://github.com/echasnovski/nvim/blob/master/src/plugins/luasnip.lua
-    -- I'm probably dropping this
-    local luasnip = require("luasnip")
-    luasnip.config.set_config({ history = true })
+    local ls = require("luasnip")
+    require("luasnip.loaders.from_vscode").lazy_load()
+    -- taken from https://github.com/echasnovski/nvim/blob/master/src/plugins/luasnip.lua
 
-    -- Load available snippets
-    require("luasnip/loaders/from_vscode").lazy_load()
-
-    -- Make snippet keymaps
+    ---@diagnostic disable-next-line: duplicate-set-field
     Config.luasnip_go_right = function()
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
       end
     end
 
+    ---@diagnostic disable-next-line: duplicate-set-field
     Config.luasnip_go_left = function()
-      if luasnip.jumpable() then
-        luasnip.jump(-1)
+      if ls.jumpable() then
+        ls.jump(-1)
       end
     end
 
@@ -39,17 +36,19 @@ return {
     -- enough (~0.1ms during normal typing).
     local luasnip_ns = vim.api.nvim_create_namespace("luasnip")
 
+    ---@diagnostic disable-next-line: duplicate-set-field
     Config.luasnip_notify_clear = function()
       vim.api.nvim_buf_clear_namespace(0, luasnip_ns, 0, -1)
     end
 
+    ---@diagnostic disable-next-line: duplicate-set-field
     Config.luasnip_notify = function()
-      if not luasnip.expandable() then
+      if not ls.expandable() then
         return Config.luasnip_notify_clear()
       end
       local line = vim.api.nvim_win_get_cursor(0)[1] - 1
-      local col = vim.api.nvim_win_get_cursor(0)[2] - 1
-      vim.api.nvim_buf_set_virtual_text(0, luasnip_ns, line, { { "!", "special" } }, {})
+      ---@diagnostic disable-next-line: deprecated
+      vim.api.nvim_buf_set_virtual_text(0, luasnip_ns, line, { { "!", "Special" } }, {})
     end
 
     vim.cmd([[au InsertEnter,CursorMovedI,TextChangedI,TextChangedP * lua pcall(Config.luasnip_notify)]])

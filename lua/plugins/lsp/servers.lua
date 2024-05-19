@@ -1,11 +1,10 @@
 local util = require("lspconfig.util")
 
 return {
-  eslint = function(lspconfig, on_attach, lsp_defaults)
+  eslint = function(lspconfig, lsp_defaults)
     -- Note: If working with a repository where eslint is specified in the package.json
     -- but the node_modules are not installed, install eslint globally: npm i -g eslint
     lspconfig.eslint.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       root_dir = util.root_pattern(".eslintrc.js", "node_modules", ".git"),
       filetypes = {
@@ -19,9 +18,8 @@ return {
     })
   end,
 
-  intelephense = function(lspconfig, on_attach, lsp_defaults)
+  intelephense = function(lspconfig, lsp_defaults)
     lspconfig.intelephense.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       settings = {
         intelephense = {
@@ -31,9 +29,8 @@ return {
     })
   end,
 
-  psalm = function(lspconfig, on_attach, lsp_defaults)
+  psalm = function(lspconfig, lsp_defaults)
     lspconfig.psalm.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       cmd = { "psalm", "--language-server" },
       filetypes = { "php" },
@@ -41,9 +38,8 @@ return {
     })
   end,
 
-  emmet_ls = function(lspconfig, on_attach, lsp_defaults)
+  emmet_ls = function(lspconfig, lsp_defaults)
     lspconfig.emmet_ls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       filetypes = {
         "html",
@@ -62,10 +58,9 @@ return {
     })
   end,
 
-  html = function(lspconfig, on_attach, lsp_defaults)
+  html = function(lspconfig, lsp_defaults)
     lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig.html.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       filetypes = {
         "html",
@@ -78,15 +73,14 @@ return {
     })
   end,
 
-  jsonls = function(lspconfig, on_attach, lsp_defaults)
+  jsonls = function(lspconfig, lsp_defaults)
     lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig.jsonls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
     })
   end,
 
-  tsserver = function(lspconfig, on_attach, lsp_defaults)
+  tsserver = function(lspconfig, lsp_defaults)
     local mason_registry = require("mason-registry")
     local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
       .. "/node_modules/@vue/language-server"
@@ -130,7 +124,6 @@ return {
           },
         },
       },
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       filetypes = {
         "javascript",
@@ -144,9 +137,8 @@ return {
     })
   end,
 
-  rust_analyzer = function(lspconfig, on_attach, lsp_defaults)
+  rust_analyzer = function(lspconfig, lsp_defaults)
     lspconfig.rust_analyzer.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       settings = {
         ["rust-analyzer"] = {
@@ -169,9 +161,8 @@ return {
     -- require("rust-tools").setup {}
   end,
 
-  pyright = function(lspconfig, on_attach, lsp_defaults)
+  pyright = function(lspconfig, lsp_defaults)
     lspconfig.pyright.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       settings = {
         python = {
@@ -185,9 +176,8 @@ return {
     })
   end,
 
-  gopls = function(lspconfig, on_attach, lsp_defaults)
+  gopls = function(lspconfig, lsp_defaults)
     lspconfig.gopls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       cmd = { "gopls", "serve" },
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -203,9 +193,8 @@ return {
     })
   end,
 
-  helm_ls = function(lspconfig, on_attach, lsp_defaults)
+  helm_ls = function(lspconfig, lsp_defaults)
     lspconfig.helm_ls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       filetypes = { "helm_ls", "serve" },
       root_dir = function(fname)
@@ -214,9 +203,8 @@ return {
     })
   end,
 
-  lua_ls = function(lspconfig, on_attach, lsp_defaults)
+  lua_ls = function(lspconfig, lsp_defaults)
     lspconfig.lua_ls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       settings = {
         Lua = {
@@ -231,9 +219,8 @@ return {
   end,
 
   -- not mason related
-  dartls = function(lspconfig, on_attach, lsp_defaults)
+  dartls = function(lspconfig, lsp_defaults)
     lspconfig.dartls.setup({
-      on_attach = on_attach,
       capabilities = lsp_defaults.capabilities,
       cmd = { "dart", "language-server", "--protocol=lsp" },
       filetypes = { "dart" },

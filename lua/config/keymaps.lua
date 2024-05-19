@@ -26,8 +26,6 @@ vim.keymap.set("n", "<C-h>", "gT")
 -- qf
 vim.keymap.set("n", "<C-k>", ":cn<CR>zz")
 vim.keymap.set("n", "<C-j>", ":cp<CR>zz")
-vim.keymap.set("n", "<leader><C-k>", ":lnext<CR>zz")
-vim.keymap.set("n", "<leader><C-j>", ":lprevious<CR>zz")
 
 -- command
 vim.keymap.set("c", "<C-p>", "<Up>", { silent = false })
@@ -36,6 +34,10 @@ vim.keymap.set("c", "<C-n>", "<Down>", { silent = false })
 -- project files
 vim.keymap.set("n", "<leader>-", ":Ex<CR>")
 
+-- wildmenu
+vim.keymap.set("i", "<TAB>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true, silent = false })
+vim.keymap.set("i", "<S-TAB>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true, silent = false })
+
 -- tools
 vim.keymap.set(
   "n",
@@ -43,6 +45,7 @@ vim.keymap.set(
   [[:%s///gn<CR>``cgn]],
   Config.remap_opt("replace value after search under cursor, . to continue", true)
 )
+
 vim.keymap.set(
   "n",
   "tR",
@@ -51,8 +54,13 @@ vim.keymap.set(
 )
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
 
+vim.keymap.set("n", "<leader>sg", function()
+  local search = vim.fn.input("Grep > ")
+  vim.cmd("silent grep! " .. search)
+end, Config.remap_opt("[s]earch [g]rep", false))
+
 -- toggles
-vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", true))
-vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", true))
-vim.keymap.set("n", "<leader>th", ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", true))
-vim.keymap.set("n", "<leader>tp", ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", true))
+vim.keymap.set("n", [[\w]], ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", false))
+vim.keymap.set("n", [[\n]], ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", false))
+vim.keymap.set("n", [[\h]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
+vim.keymap.set("n", [[\p]], ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", false))

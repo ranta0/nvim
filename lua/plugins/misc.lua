@@ -2,11 +2,18 @@ return {
   "tpope/vim-sleuth",
 
   {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, Config.remap_opt("[g]it [s]tatus", true))
+    end,
+  },
+
+  {
     "mbbill/undotree",
     keys = {
       {
         "<leader>u",
-        "<CMD>UndotreeToggle<CR><CMD>UndotreeFocus<CR>",
+        "<cmd>UndotreeToggle<CR><cmd>UndotreeFocus<CR>",
         desc = "[u]ndotreeToggle",
       },
     },
@@ -29,6 +36,13 @@ return {
 
   {
     "stevearc/oil.nvim",
+    keys = {
+      {
+        "<leader>ef",
+        "<cmd>Oil<CR>",
+        desc = "[e]xplore [f]ile",
+      },
+    },
     opts = {
       default_file_explorer = false,
       keymaps = {
