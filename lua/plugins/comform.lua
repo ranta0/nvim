@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 return {
   "stevearc/conform.nvim",
   lazy = true,
@@ -31,6 +29,6 @@ return {
         async = false,
         timeout_ms = 1000,
       })
-    end, utils.remap_opt("[m]ode file [f]ormat", true))
+    end, Config.remap_opt("[m]ode file [f]ormat", true))
   end,
 }

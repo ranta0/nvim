@@ -1,6 +1,3 @@
-local utils = require("utils")
-
--- nice to have
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -36,23 +33,26 @@ vim.keymap.set("n", "<leader><C-j>", ":lprevious<CR>zz")
 vim.keymap.set("c", "<C-p>", "<Up>", { silent = false })
 vim.keymap.set("c", "<C-n>", "<Down>", { silent = false })
 
+-- project files
+vim.keymap.set("n", "<leader>-", ":Ex<CR>")
+
 -- tools
 vim.keymap.set(
   "n",
   "tr",
   [[:%s///gn<CR>``cgn]],
-  utils.remap_opt("replace value after search under cursor, . to continue", true)
+  Config.remap_opt("replace value after search under cursor, . to continue", true)
 )
 vim.keymap.set(
   "n",
   "tR",
   [[:%s///gn<CR>``cgN]],
-  utils.remap_opt("replace value after search under cursor, . to continue backwards", true)
+  Config.remap_opt("replace value after search under cursor, . to continue backwards", true)
 )
-vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", utils.remap_opt("remove trailing characters", true))
+vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
 
 -- toggles
-vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", utils.remap_opt("[t]oggle [w]rap", true))
-vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>", utils.remap_opt("[t]oggle relative[n]umber", true))
-vim.keymap.set("n", "<leader>th", ":set hls!<CR>", utils.remap_opt("[t]oggle [h]lsearch", true))
-vim.keymap.set("n", "<leader>tp", ":set paste!<CR>", utils.remap_opt("[t]oggle [p]aste", true))
+vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", true))
+vim.keymap.set("n", "<leader>tn", ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", true))
+vim.keymap.set("n", "<leader>th", ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", true))
+vim.keymap.set("n", "<leader>tp", ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", true))

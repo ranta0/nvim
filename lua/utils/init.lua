@@ -1,25 +1,26 @@
-local M = {}
+Config.undodir = os.getenv("HOME") .. "/.vim/undodir"
+Config.sessiondir = os.getenv("HOME") .. "/.vim/sessionsdir/"
 
-M.diagnostics_signs = {
+Config.diagnostics_signs = {
   Error = "✗ ",
   Warn = "! ",
   Hint = "➜ ",
   Info = "# ",
 }
 
-M.mason_signs = {
+Config.mason_signs = {
   Done = "✓",
   Pending = "➜",
   Failed = "✗",
 }
 
-M.dap_icons = {
+Config.dap_icons = {
   expanded = "▾",
   collapsed = "▸",
   current_frame = "*",
 }
 
-M.dap_icons_controls = {
+Config.dap_icons_controls = {
   icons = {
     pause = "⏸",
     play = "▶",
@@ -33,7 +34,7 @@ M.dap_icons_controls = {
   },
 }
 
-M.ensure_installed_hl = {
+Config.ensure_installed_hl = {
   "vimdoc",
   "markdown",
   "tsx",
@@ -50,7 +51,7 @@ M.ensure_installed_hl = {
   "bash",
 }
 
-M.ensure_installed_mason = {
+Config.ensure_installed_mason = {
   "lua-language-server",
   "shfmt",
   -- "prettier",
@@ -63,7 +64,7 @@ M.ensure_installed_mason = {
   -- "php-debug-adapter",
 }
 
-function M.remap_opt(desc, silent)
+Config.remap_opt = function(desc, silent)
   local bufopts = {
     noremap = true,
     silent = silent,
@@ -71,5 +72,3 @@ function M.remap_opt(desc, silent)
   }
   return bufopts
 end
-
-return M

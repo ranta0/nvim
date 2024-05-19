@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 -- diagnostics
 local options = { border = "rounded", source = "always" }
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, options)
@@ -25,9 +23,9 @@ vim.keymap.set("n", "<leader>te", function()
   if not vim.tbl_isempty(vim.fn.getqflist()) then
     vim.cmd("copen")
   end
-end, utils.remap_opt("[t]oggle [e]rrors", true))
+end, Config.remap_opt("[t]oggle [e]rrors", true))
 
-for type, icon in pairs(utils.diagnostics_signs) do
+for type, icon in pairs(Config.diagnostics_signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
@@ -48,9 +46,9 @@ return {
       ui = {
         border = "single",
         icons = {
-          package_installed = utils.mason_signs.Done,
-          package_pending = utils.mason_signs.Pending,
-          package_uninstalled = utils.mason_signs.Failed,
+          package_installed = Config.mason_signs.Done,
+          package_pending = Config.mason_signs.Pending,
+          package_uninstalled = Config.mason_signs.Failed,
         },
       },
       max_concurrent_installers = 1,
@@ -61,24 +59,24 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local mason_lspconfig = require("mason-lspconfig")
 
       -- NOTE: make sure to setup neodev BEFORE lspconfig
       require("neodev").setup({})
 
       local lsp_defaults = lspconfig.util.default_config
-      lsp_defaults.capabilities = vim.tbl_deep_extend(
-        "force",
-        lsp_defaults.capabilities,
-        cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      )
+      -- lsp_defaults.capabilities = vim.tbl_deep_extend(
+      --   "force",
+      --   lsp_defaults.capabilities,
+      --   -- cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      -- )
 
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
@@ -86,69 +84,69 @@ return {
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, utils.remap_opt("[g]o to [D]eclaration", true))
+        vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, Config.remap_opt("[g]o to [D]eclaration", true))
 
         vim.keymap.set(
           "n",
           "<leader>gd",
           "<CMD>Telescope lsp_definitions<CR>",
-          utils.remap_opt("[g]o to [d]definitions", true)
+          Config.remap_opt("[g]o to [d]definitions", true)
         )
 
         vim.keymap.set(
           "n",
           "<leader>gr",
           "<CMD>Telescope lsp_references<CR>",
-          utils.remap_opt("[g]o to [r]eferences", true)
+          Config.remap_opt("[g]o to [r]eferences", true)
         )
 
         vim.keymap.set(
           "n",
           "<leader>gi",
           "<CMD>Telescope lsp_implementations<CR>",
-          utils.remap_opt("[g]o to [i]mplementations", true)
+          Config.remap_opt("[g]o to [i]mplementations", true)
         )
 
         vim.keymap.set(
           "n",
           "<leader>gt",
           "<CMD>Telescope lsp_type_definitions<CR>",
-          utils.remap_opt("[g]o to [t]ype definitions", true)
+          Config.remap_opt("[g]o to [t]ype definitions", true)
         )
 
         if vim.lsp.inlay_hint then
           vim.keymap.set("n", "<leader>ti", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end, utils.remap_opt("[t]oggle [i]nlay hints", true))
+          end, Config.remap_opt("[t]oggle [i]nlay hints", true))
         end
 
         vim.keymap.set("n", "<leader>rp", function()
           vim.lsp.buf.rename()
-        end, utils.remap_opt("[r]ename string [p]roject wide", true))
+        end, Config.remap_opt("[r]ename string [p]roject wide", true))
 
         vim.keymap.set("n", "<leader>ws", function()
           vim.lsp.buf.workspace_symbol()
-        end, utils.remap_opt("[w]orkspace [s]ymbol", true))
+        end, Config.remap_opt("[w]orkspace [s]ymbol", true))
 
         vim.keymap.set(
           "n",
           "<leader>K",
           vim.lsp.buf.hover,
-          utils.remap_opt("open floating information under cursor", true)
+          Config.remap_opt("open floating information under cursor", true)
         )
 
         vim.keymap.set(
           "n",
           "<leader>k",
           vim.lsp.buf.signature_help,
-          utils.remap_opt("open floating singature under cursor", true)
+          Config.remap_opt("open floating singature under cursor", true)
         )
 
         vim.keymap.set(
           "n",
           "<leader>ca",
           vim.lsp.buf.code_action,
-          utils.remap_opt("[c]ode [a]ction under cursor", true)
+          Config.remap_opt("[c]ode [a]ction under cursor", true)
         )
 
         -- Diagnostics
@@ -156,25 +154,25 @@ return {
           "n",
           "<leader>e",
           vim.diagnostic.open_float,
-          utils.remap_opt("open floating diagnostic message", true)
+          Config.remap_opt("open floating diagnostic message", true)
         )
 
         vim.keymap.set("n", "[d", function()
           vim.diagnostic.goto_next()
-        end, utils.remap_opt("go to next diagnostic", true))
+        end, Config.remap_opt("go to next diagnostic", true))
 
         vim.keymap.set("n", "]d", function()
           vim.diagnostic.goto_prev()
-        end, utils.remap_opt("go to next diagnostic", true))
+        end, Config.remap_opt("go to next diagnostic", true))
 
         vim.keymap.set("n", "<leader>mF", function()
           vim.lsp.buf.format()
-        end, utils.remap_opt("[m]ode [F]ormat using lsp", true))
+        end, Config.remap_opt("[m]ode [F]ormat using lsp", true))
       end
 
       -- ensure servers are installed
       require("mason-tool-installer").setup({
-        ensure_installed = utils.ensure_installed_mason,
+        ensure_installed = Config.ensure_installed_mason,
       })
       local servers = require("plugins.lsp.servers")
 

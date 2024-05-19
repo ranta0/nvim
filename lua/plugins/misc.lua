@@ -1,25 +1,5 @@
-local utils = require("utils")
-
 return {
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      indent = { char = "╎" },
-    },
-  },
-
   "tpope/vim-sleuth",
-
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-  },
-
-  {
-    "j-hui/fidget.nvim",
-    opts = {},
-  },
 
   {
     "mbbill/undotree",
@@ -32,7 +12,7 @@ return {
     },
     lazy = false,
     config = function()
-      vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+      vim.opt.undodir = Config.undodir
     end,
   },
 
@@ -42,7 +22,7 @@ return {
       require("auto-session").setup({
         log_level = "error",
         auto_session_suppress_dirs = { "~/Documents", "~/Downloads" },
-        auto_session_root_dir = os.getenv("HOME") .. "/.vim/sessionsdir/",
+        auto_session_root_dir = Config.sessiondir,
       })
     end,
   },
@@ -63,8 +43,6 @@ return {
     },
     config = function(_, opts)
       require("oil").setup(opts)
-
-      vim.keymap.set("n", "<leader>-", require("oil").open, utils.remap_opt("open parent dir", true))
     end,
   },
 }
