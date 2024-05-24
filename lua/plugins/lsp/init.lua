@@ -1,4 +1,17 @@
 -- diagnostics
+local options = { border = "rounded", source = "always" }
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, options)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, options)
+
+vim.diagnostic.config({
+  virtual_text = true,
+  float = {
+    focusable = true,
+    source = true,
+    header = "",
+  },
+})
+
 for type, icon in pairs(Config.diagnostics_signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -73,7 +86,7 @@ return {
             end, { buffer = 0 })
           end
 
-          vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { buffer = 0 })
+          vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
         end,
       })
 
