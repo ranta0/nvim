@@ -24,13 +24,10 @@ return {
   },
 
   {
-    "rmagatti/auto-session",
+    "skanehira/vsession",
     config = function()
-      require("auto-session").setup({
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/Documents", "~/Downloads" },
-        auto_session_root_dir = Config.sessiondir,
-      })
+      vim.g.vsession_save_last_on_leave = 1
+      vim.g.vsession_path = Config.sessiondir
     end,
   },
 

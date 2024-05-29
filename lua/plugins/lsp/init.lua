@@ -71,6 +71,7 @@ return {
           vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
           vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
           vim.keymap.set("n", "<leader>rp", vim.lsp.buf.rename, { buffer = 0 })

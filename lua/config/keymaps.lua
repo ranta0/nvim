@@ -39,19 +39,8 @@ vim.keymap.set("i", "<TAB>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = tr
 vim.keymap.set("i", "<S-TAB>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true, silent = false })
 
 -- tools
-vim.keymap.set(
-  "n",
-  "tr",
-  [[:%s///gn<CR>``cgn]],
-  Config.remap_opt("replace value after search under cursor, . to continue", true)
-)
+vim.keymap.set("n", "tr", [[*Ncgn]])
 
-vim.keymap.set(
-  "n",
-  "tR",
-  [[:%s///gn<CR>``cgN]],
-  Config.remap_opt("replace value after search under cursor, . to continue backwards", true)
-)
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
 
 vim.keymap.set("n", "<leader>sg", function()
@@ -62,5 +51,5 @@ end, Config.remap_opt("[s]earch [g]rep", false))
 -- toggles
 vim.keymap.set("n", [[\w]], ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", false))
 vim.keymap.set("n", [[\n]], ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", false))
-vim.keymap.set("n", [[\h]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
+vim.keymap.set("n", [[//]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
 vim.keymap.set("n", [[\p]], ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", false))

@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "qf" },
-  command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]],
+  command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>]],
 })
 
 -- do not continue comments on new line

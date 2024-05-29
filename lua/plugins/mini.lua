@@ -53,6 +53,7 @@ Config.pick_keymaps = function()
   keymap("sG", "<cmd>Pick grep_live<CR>", Config.remap_opt("[s]earch [G]rep live", true))
   keymap("sw", '<cmd>Pick grep pattern="<cword>"<CR>', Config.remap_opt("[s]earch grep current [w]ord", true))
   keymap("?", '<cmd>Pick visit_paths cwd=""<CR>', Config.remap_opt("Visit paths (all)", true))
+  keymap("<leader>", '<cmd>Pick buffers<CR>', Config.remap_opt("Buffers", true))
 
   vim.keymap.set("n", "z=", "<cmd>Pick spellsuggest<CR>", Config.remap_opt("spell suggestion", true))
 end
@@ -80,16 +81,17 @@ return {
 
       require("mini.files").setup({
         content = { prefix = function() end },
+        options = {
+          use_as_default_explorer = false,
+        },
       })
 
       local pick = require("mini.pick")
       pick.setup({
         source = { show = pick.default_show },
         mappings = {
-          toggle_info = "<C-k>",
-          toggle_preview = "<C-p>",
-          move_down = "<Tab>",
-          move_up = "<S-Tab>",
+          move_down = "<C-j>",
+          move_up = "<C-k>",
         },
       })
 
