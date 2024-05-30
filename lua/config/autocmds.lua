@@ -1,15 +1,10 @@
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf" },
-  command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>]],
-})
-
 -- do not continue comments on new line
 vim.cmd([[autocmd BufEnter * set formatoptions-=cro]])
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = { "bash-fc.*" },
-  command = [[set syntax=sh filetype=sh]],
-})
+-- qf related
+vim.cmd([[autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>:lclose<CR>]])
+vim.cmd([[autocmd WinEnter * if &l:buftype ==# 'quickfix' && winnr('$') == 1 && has('timers')
+            \ | call timer_start(0, {-> execute('quit') }) | endif]])
 
 vim.api.nvim_create_autocmd({ "BufReadPre" }, {
   callback = function(event)

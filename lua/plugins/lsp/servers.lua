@@ -2,7 +2,8 @@ local util = require("lspconfig.util")
 
 return {
   eslint = function(lspconfig, lsp_defaults)
-    -- Note: If working with a repository where eslint is specified in the package.json
+    -- TODO: this is currently broken
+    -- NOTE: If working with a repository where eslint is specified in the package.json
     -- but the node_modules are not installed, install eslint globally: npm i -g eslint
     lspconfig.eslint.setup({
       capabilities = lsp_defaults.capabilities,

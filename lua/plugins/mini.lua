@@ -65,9 +65,7 @@ return {
     config = function()
       require("mini.completion").setup()
       require("mini.bracketed").setup()
-      require("mini.trailspace").setup()
       require("mini.comment").setup()
-      require("mini.misc").setup()
       require("mini.extra").setup()
       require("mini.visits").setup()
 
@@ -110,13 +108,6 @@ return {
         use_icons = true,
       })
 
-      require("mini.notify").setup({
-        lsp_progress = {
-          enable = true,
-          duration_last = 1000,
-        },
-      })
-
       local hipatterns = require("mini.hipatterns")
       local hi_words = require("mini.extra").gen_highlighter.words
       hipatterns.setup({
@@ -133,6 +124,7 @@ return {
       })
 
       Config.pick_keymaps()
+
       -- use base16 colours
       vim.cmd("colorscheme onedark-revisited")
     end,

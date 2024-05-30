@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- tabs
 vim.keymap.set("n", "gf", "<C-w>gf")
-vim.keymap.set("n", "<C-t>", ":tabnew<CR>")
+vim.keymap.set("n", "<C-t>", ":tabnew<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", "gt")
 vim.keymap.set("n", "<C-h>", "gT")
 
@@ -49,7 +49,8 @@ vim.keymap.set("n", "<leader>sg", function()
 end, Config.remap_opt("[s]earch [g]rep", false))
 
 -- toggles
-vim.keymap.set("n", [[\w]], ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", false))
-vim.keymap.set("n", [[\n]], ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", false))
-vim.keymap.set("n", [[//]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
-vim.keymap.set("n", [[\p]], ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", false))
+vim.keymap.set("n", [[//]], ":let @/ ='' <CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
+vim.keymap.set("n", [[,w]], ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", false))
+vim.keymap.set("n", [[,n]], ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", false))
+vim.keymap.set("n", [[,h]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
+vim.keymap.set("n", [[,p]], ":set paste!<CR>", Config.remap_opt("[t]oggle [p]aste", false))

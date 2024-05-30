@@ -19,6 +19,7 @@ return {
     },
     lazy = false,
     config = function()
+      vim.o.undofile = true
       vim.opt.undodir = Config.undodir
     end,
   },
@@ -52,8 +53,5 @@ return {
         show_hidden = true,
       },
     },
-    config = function(_, opts)
-      require("oil").setup(opts)
-    end,
   },
 }

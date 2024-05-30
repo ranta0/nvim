@@ -17,7 +17,7 @@ for type, icon in pairs(Config.diagnostics_signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.keymap.set("n", "<leader>te", function()
+vim.keymap.set("n", "<leader>td", function()
   vim.diagnostic.setqflist()
   if not vim.tbl_isempty(vim.fn.getqflist()) then
     vim.cmd("copen")
@@ -66,6 +66,8 @@ return {
         callback = function()
           -- vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
           vim.opt_local.omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+          -- also a visual indicator
+          vim.opt_local.signcolumn = "yes:4"
 
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
           vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
@@ -76,7 +78,7 @@ return {
 
           vim.keymap.set("n", "<leader>rp", vim.lsp.buf.rename, { buffer = 0 })
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
-          vim.keymap.set("n", "<leader>mF", vim.lsp.buf.format, { buffer = 0 })
+          vim.keymap.set("n", "<leader>mf", vim.lsp.buf.format, { buffer = 0 })
           vim.keymap.set("n", "<leader>ws", function()
             vim.lsp.buf.workspace_symbol()
           end, { buffer = 0 })
