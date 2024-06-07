@@ -1,5 +1,5 @@
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
@@ -42,11 +42,10 @@ vim.keymap.set("i", "<S-TAB>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr 
 vim.keymap.set("n", "tr", [[*Ncgn]])
 
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
-
-vim.keymap.set("n", "<leader>sg", function()
-  local search = vim.fn.input("Grep > ")
-  vim.cmd("silent grep! " .. search)
-end, Config.remap_opt("[s]earch [g]rep", false))
+vim.keymap.set("n", "<leader>sg", Config.grep, Config.remap_opt("[s]earch [g]rep", false))
+vim.keymap.set("n", "<leader>sG", function()
+  Config.grep(0)
+end, Config.remap_opt("[s]earch [G]rep case sensitive", false))
 
 -- toggles
 vim.keymap.set("n", [[//]], ":let @/ ='' <CR>", Config.remap_opt("[t]oggle [h]lsearch", false))

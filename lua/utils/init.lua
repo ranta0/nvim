@@ -63,3 +63,14 @@ Config.remap_opt = function(desc, silent)
   }
   return bufopts
 end
+
+Config.grep = function(ignore_case)
+  ignore_case = ignore_case or 1
+  local cmd = "silent grep! "
+  if ignore_case == 1 then
+    cmd = cmd .. " --ignore-case "
+  end
+  local search = vim.fn.input("Grep > ")
+  vim.cmd(cmd .. search)
+  vim.cmd("copen")
+end

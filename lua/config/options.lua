@@ -33,7 +33,9 @@ vim.o.colorcolumn = "80"
 vim.o.signcolumn = "yes:1"
 
 vim.o.scrolloff = 8
-vim.o.grepprg = "grep -rnH --exclude-dir={.git,node_modules,vendor} --ignore-case"
-vim.o.grepformat = "%f:%l:%m"
 
-vim.g.netrw_liststyle = 3
+vim.o.grepprg = "grep -rnH --exclude-dir={.git,node_modules,vendor}"
+if vim.fn.executable("rg") == 1 then
+  vim.o.grepprg = "rg --vimgrep"
+end
+vim.o.grepformat = "%f:%l:%m"
