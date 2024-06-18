@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>td", function()
   if not vim.tbl_isempty(vim.fn.getqflist()) then
     vim.cmd("copen")
   end
-end, Config.remap_opt("[t]oggle [e]rrors", true))
+end, Config.remap_opt("[t]oggle [d]iagnostic", true))
 
 return {
   {
@@ -66,8 +66,6 @@ return {
         callback = function()
           -- vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
           vim.opt_local.omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
-          -- also a visual indicator
-          vim.opt_local.signcolumn = "yes:4"
 
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
           vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })

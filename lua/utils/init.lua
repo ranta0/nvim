@@ -1,5 +1,5 @@
-Config.undodir = os.getenv("HOME") .. "/.vim/undodir/"
-Config.sessiondir = os.getenv("HOME") .. "/.vim/sessionsdir/"
+Config.undodir = os.getenv("HOME") .. "/.vim/undodir"
+Config.sessiondir = os.getenv("HOME") .. "/.vim/sessionsdir"
 
 Config.diagnostics_signs = {
   Error = "✗ ",

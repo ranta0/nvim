@@ -11,7 +11,7 @@ Config.pick_keymaps = function()
   keymap("sf", "<cmd>Pick files<CR>", Config.remap_opt("[s]earch [f]iles", true))
   keymap("sh", "<cmd>Pick git_files<CR>", Config.remap_opt("[s]earch files [h]idden", true))
   keymap("sl", "<cmd>Pick grep_live<CR>", Config.remap_opt("[s]earch grep [l]ive", true))
-  keymap("?", '<cmd>Pick visit_paths cwd=""<CR>', Config.remap_opt("Visit paths (all)", true))
+  keymap("?", '<cmd>Pick oldfiles<CR>', Config.remap_opt("Visit paths (all)", true))
   keymap("<leader>", "<cmd>Pick buffers<CR>", Config.remap_opt("Buffers", true))
 
   vim.keymap.set("n", "z=", "<cmd>Pick spellsuggest<CR>", Config.remap_opt("spell suggestion", true))
@@ -26,18 +26,9 @@ return {
       require("mini.bracketed").setup()
       require("mini.comment").setup()
       require("mini.extra").setup()
-      require("mini.visits").setup()
 
       require("mini.statusline").setup({
         use_icons = false,
-      })
-
-      require("mini.indentscope").setup({
-        draw = {
-          animation = function()
-            return 1
-          end,
-        },
       })
 
       require("mini.files").setup({

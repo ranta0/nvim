@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>sG", function()
 end, Config.remap_opt("[s]earch [G]rep case sensitive", false))
 
 -- toggles
-vim.keymap.set("n", [[//]], ":let @/ ='' <CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
+vim.keymap.set("n", "<leader>/", ":let @/ ='' <CR>", Config.remap_opt("[t]oggle [h]lsearch", false))
 vim.keymap.set("n", [[,w]], ":set wrap!<CR>", Config.remap_opt("[t]oggle [w]rap", false))
 vim.keymap.set("n", [[,n]], ":set relativenumber!<CR>", Config.remap_opt("[t]oggle relative[n]umber", false))
 vim.keymap.set("n", [[,h]], ":set hls!<CR>", Config.remap_opt("[t]oggle [h]lsearch", false))

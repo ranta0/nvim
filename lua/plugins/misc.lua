@@ -28,6 +28,9 @@ return {
     "skanehira/vsession",
     config = function()
       vim.g.vsession_save_last_on_leave = 1
+      if vim.fn.isdirectory(Config.sessiondir) == 0 then
+        vim.fn.mkdir(Config.sessiondir)
+      end
       vim.g.vsession_path = Config.sessiondir
     end,
   },
