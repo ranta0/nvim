@@ -77,9 +77,7 @@ return {
           vim.keymap.set("n", "<leader>rp", vim.lsp.buf.rename, { buffer = 0 })
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
           vim.keymap.set("n", "<leader>mf", vim.lsp.buf.format, { buffer = 0 })
-          vim.keymap.set("n", "<leader>ws", function()
-            vim.lsp.buf.workspace_symbol()
-          end, { buffer = 0 })
+          vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, { buffer = 0 })
 
           if vim.lsp.inlay_hint then
             vim.keymap.set("n", "<leader>ti", function()
@@ -93,6 +91,7 @@ return {
 
       local lsp_defaults = lspconfig.util.default_config
       local servers = require("plugins.lsp.servers")
+
       -- mason independent
       -- servers.dartls(lspconfig, lsp_defaults)
 

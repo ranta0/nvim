@@ -43,9 +43,8 @@ vim.keymap.set("n", "tr", [[*Ncgn]])
 
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
 vim.keymap.set("n", "<leader>sg", Config.grep, Config.remap_opt("[s]earch [g]rep", false))
-vim.keymap.set("n", "<leader>sG", function()
-  Config.grep(0)
-end, Config.remap_opt("[s]earch [G]rep case sensitive", false))
+vim.keymap.set("n", "<leader>sG", function() Config.grep(0) end,
+  Config.remap_opt("[s]earch [G]rep case sensitive", false))
 
 -- toggles
 vim.keymap.set("n", "<leader>/", ":let @/ ='' <CR>", Config.remap_opt("[t]oggle [h]lsearch", false))

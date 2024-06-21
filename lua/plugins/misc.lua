@@ -1,11 +1,41 @@
 return {
   "tpope/vim-sleuth",
 
+  -- install it if missing
+  { "junegunn/fzf", build = "./install --bin" },
+
   {
     "tpope/vim-fugitive",
     config = function()
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git, Config.remap_opt("[g]it [s]tatus", true))
     end,
+  },
+
+  {
+    "ibhagwan/fzf-lua",
+    config = function()
+      require("fzf-lua").setup({})
+
+      vim.keymap.set("n", "<leader>sd", "<cmd>FzfLua lsp_document_diagnostics<CR>",
+        Config.remap_opt("[s]earch [d]iagnostcs", true))
+      vim.keymap.set("n", "<leader>sD", "<cmd>FzfLua lsp_workspace_diagnostics<CR>",
+        Config.remap_opt("[s]earch [D]iagnostcs", true))
+      vim.keymap.set("n", "<leader>sf", "<cmd>FzfLua files<CR>",
+        Config.remap_opt("[s]earch [f]files", true))
+      vim.keymap.set("n", "<leader>?", "<cmd>FzfLua oldfiles<CR>",
+        Config.remap_opt("search oldfiles", true))
+      vim.keymap.set("n", "<leader><leader>", "<cmd>FzfLua buffers<CR>",
+        Config.remap_opt("search buffers", true))
+      vim.keymap.set("n", "<leader>sl", "<cmd>FzfLua live_grep<CR>",
+        Config.remap_opt("grep [l]ive", true))
+
+      vim.keymap.set("n", "z=", "<cmd>FzfLua spell_suggest<CR>",
+        Config.remap_opt("spell suggest", true))
+
+      vim.keymap.set("i", "<C-x><C-f>",
+        function() require("fzf-lua").complete_path() end,
+        Config.remap_opt("fuzzy complete path", true))
+    end
   },
 
   {
@@ -36,25 +66,14 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    keys = {
-      {
-        "<leader>ef",
-        "<cmd>Oil<CR>",
-        desc = "[e]xplore [f]ile",
-      },
-    },
-    opts = {
-      default_file_explorer = false,
-      keymaps = {
-        ["<C-t>"] = false,
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-        ["<C-r>"] = "actions.refresh",
-      },
-      view_options = {
-        show_hidden = true,
-      },
-    },
-  },
+    "kelly-lin/ranger.nvim",
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require("ranger-nvim").setup({ replace_netrw = false })
+      vim.api.nvim_set_keymap("n", "<leader>f", "", {
+        noremap = true,
+        callback = function() require("ranger-nvim").open(true) end,
+      })
+    end,
+  }
 }
