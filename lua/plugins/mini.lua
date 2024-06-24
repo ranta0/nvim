@@ -7,10 +7,6 @@ return {
     require("mini.comment").setup()
     require("mini.extra").setup()
 
-    require("mini.statusline").setup({
-      use_icons = false,
-    })
-
     require("mini.diff").setup({
       view = {
         style = "sign",

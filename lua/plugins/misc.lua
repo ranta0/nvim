@@ -58,6 +58,20 @@ return {
   },
 
   {
+    "francoiscabrol/ranger.vim",
+    dependencies = {
+      "rbgrouleff/bclose.vim",
+    },
+    keys = {
+      {
+        "<leader>f",
+        "<cmd>Ranger<CR>",
+        desc = "open Ranger",
+      },
+    },
+  },
+
+  {
     "skanehira/vsession",
     config = function()
       vim.g.vsession_save_last_on_leave = 1
@@ -65,20 +79,6 @@ return {
         vim.fn.mkdir(Config.sessiondir)
       end
       vim.g.vsession_path = Config.sessiondir
-    end,
-  },
-
-  {
-    "kelly-lin/ranger.nvim",
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("ranger-nvim").setup({ replace_netrw = false })
-      vim.api.nvim_set_keymap("n", "<leader>f", "", {
-        noremap = true,
-        callback = function()
-          require("ranger-nvim").open(true)
-        end,
-      })
     end,
   },
 }

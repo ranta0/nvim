@@ -40,6 +40,7 @@ vim.keymap.set("i", "<S-TAB>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr 
 
 -- tools
 vim.keymap.set("n", "tr", [[*Ncgn]])
+vim.keymap.set("n", "<leader>cd", ":lcd%:p:h<CR>:pwd<CR>", { silent = true })
 
 vim.keymap.set("v", "T", ":s/\\s\\+$//e<Left><CR>", Config.remap_opt("remove trailing characters", true))
 vim.keymap.set("n", "<leader>sg", Config.grep, Config.remap_opt("[s]earch [g]rep", false))

@@ -34,6 +34,8 @@ vim.o.signcolumn = "yes:1"
 
 vim.o.scrolloff = 8
 
+vim.o.statusline = "[%n] %<%.99f %h%w%m%r%=%y %{&fenc!=#''?&fenc:'none'} %{&ff} %P"
+
 vim.o.grepprg = "grep -rnH --exclude-dir={.git,node_modules,vendor}"
 if vim.fn.executable("rg") == 1 then
   vim.o.grepprg = "rg --vimgrep"
